@@ -1,0 +1,34 @@
+.registration-wrapper {
+  margin-top: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+  color: grey;
+  font-family: "Courier";
+}
+.registration-title {
+  color: #465cab;
+}
+.registration-text {
+  display: flex;
+  flex-wrap: wrap;
+  width: 15%;
+  text-decoration: none;
+  text-align: center;
+}
+
+.btn-registration {
+  width: 10%;
+  margin-top: 30px;
+  padding: 5px;
+  border: 2px solid;
+  outline: none;
+  border-radius: 50px;
+  text-align: center;
+  background-color: #465cab;
+  color: white;
+  cursor: pointer;
+  font-family: "Courier";
+}
