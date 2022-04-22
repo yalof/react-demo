@@ -1,23 +1,31 @@
 import React from 'react';
 import './App.css';
-import Posts from './components/CardPost';
-import Regisrtation from './pages/Registration';
+import Posts from './pages/Posts';
+import Confirmation from './pages/Confirmation';
 import Login from './pages/Login';
 import Registration from './pages/Registration';
 import CardPost from './components/CardPost';
+import Content from './pages/Content/Content';
+import Template from './pages/Template';
+//import CardPost from './components/CardPost';
 
 
 function App() {
   return (
-   <div className="Cards">
-   <Posts cards={modelCard}/>
-    </div>
-   /* <div> 
-      <Login />
-    </div>*/
-    /*<div> 
-    <Registration />
-  </div>*/
+   
+   <Content cards={modelCard}/>
+    
+
+      /*<Login />*/
+    
+    
+    /*<Confirmation />*/
+
+  
+    /*<Registration />*/
+  
+/*<Template />*/
+  
   );
 }
 
@@ -59,6 +67,6 @@ const modelCard = [
     author: 0,
   }
   ]
-  
+
 
 export default App;

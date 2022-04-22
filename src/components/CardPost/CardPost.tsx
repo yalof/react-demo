@@ -1,5 +1,5 @@
 import React from 'react';
-import './CardPost.css';
+import '../../components/CardPost/CardPost.css';
 
 
 const CardPost = (props: any) => {
@@ -13,19 +13,6 @@ return (
   </div>
 )
 }
-const Posts = (props: any) => {
-const cardPosts = props.cards.map((item:any) => {
-return (
-<CardPost className="posts-wrapper"
-image={item.image}
-title={item.title}
-text={item.text}
-date={item.date}
-/>
-)}
-)
-return <div className="posts-wrapper">{cardPosts}</div>
-}
 
 
-export default Posts;
+export default CardPost;

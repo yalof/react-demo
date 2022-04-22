@@ -1,0 +1,23 @@
+.btnTemplate {
+  box-sizing: border-box;
+  width: 150px;
+}
+
+.templateWrapper {
+  width: 20%;
+  margin: 100px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+  color: grey;
+  font-family: "Courier";
+}
+.templateTitle {
+  color: #465cab;
+}
+
+.dark {
+  background-color: #465cab;
+}
