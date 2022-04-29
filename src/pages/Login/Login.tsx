@@ -1,25 +1,59 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Login.css';
+import Button from '../../components/Button';
+import Input from '../../components/Input';
+
+
+
+/*class Login extends React.Component {
+    constructor(props:any) {
+super(props) {
+    this.state = {
+        activity: false
+    };
+    this.onClick = this.onClick.bind (this);
+
+}
+const onClick = () => {
+    this.setState(state => ({
+        activity: !state.activity
+    }));
+}
+render() {
+    if(this.state.activity){
+        return(
+  
+        )
+    }else {
+        return (
+
+        )
+    }
+}
+
+
+    }
+}*/
 
 const Login = (props: any) => {
     return <div className='login-wrapper'>
 <div className="login-title">
-    <h1 className="login-title_Login">Login</h1>
-    <h1>|</h1>
-    <h1 className="login-title_Registration">Registration</h1>
+    <Button className={'login-title_Login active'} btnText='Login' />
+    <p className="line"></p>
+    <Button className={'login-title_Login'} btnText='Registration'/>
 </div>
 <form className="login-form">
     <div className="login-form-email">
         <p>Email</p>
-        <input type='email' />
+        <Input type='email' />
     </div>
     <div className="login-form-password">
         <p>Password</p>
-        <input type='password' />
+        <Input type='password' />
     </div>
-    <div className="login-form-button">
-        <button className="btn-login">Login</button>
-    </div>
+   
+        <Button className='btnLogin' btnText='Login' />
+   
 </form>
 <div className="login-forgot">
     <p className="login-forgot-text">Forgot your password?</p>
@@ -28,4 +62,4 @@ const Login = (props: any) => {
            </div>
 }
 
-export default Login
+export default Login 

@@ -15,30 +15,21 @@
   gap: 10px;
 }
 
-.login-title_Login {
-  color: #465cab;
+button .login-title_Login {
+  background-color: none;
+  border: none;
+}
+button .login-title_Registration {
+  background-color: none;
+  border: none;
 }
 
-input {
-  padding: 5px;
-  border: 2px solid #465cab;
-  border-radius: 50px;
-  background-color: #ccdbe554;
-  outline: none;
+.line {
+  border-right: 2px solid #465cab;
+  height: 30px;
+  margin-top: 50px;
 }
-button {
-  width: 100%;
-  margin-top: 30px;
-  padding: 5px;
-  border: 2px solid;
-  outline: none;
-  border-radius: 50px;
-  text-align: center;
-  background-color: #465cab;
-  color: white;
-  cursor: pointer;
-  font-family: "Courier";
-}
+
 .login-forgot {
   display: flex;
   flex-direction: row;
@@ -49,4 +40,10 @@ button {
 .login-reset {
   color: #465cab;
   text-decoration: none;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
