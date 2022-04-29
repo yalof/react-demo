@@ -2,9 +2,7 @@ import React, {FC, useEffect, useState } from 'react';
 import './Login.css';
 import Button from '../../../components/Button';
 import Input from '../../../components/Input';
-import Header from '../Header';
-import Confirmation from '../../Confirmation';
-import RegistrationForm from '../Registration/Registration';
+
 
 
 type LoginFormProps = {
@@ -60,6 +58,7 @@ const passValid = (event: any) => {
 
 
 return ( 
+  
     <form className="login-form">
     <div className="login-form-email">
         <p>Email</p>
@@ -68,7 +67,7 @@ return (
     </div>
     <div className="login-form-password">
         <p>Password</p>
-        <Input   type='password' required='required' value={pass} onChange={passValid} />
+        <Input type='password' required='required' value={pass} onChange={passValid} />
         {passError && <div className='err'>{passError}</div>}
     </div>
    
@@ -83,26 +82,5 @@ return (
 )
 }
 
-const Login = () => {
-  const [tabName, setTabName] = useState ('login');
-  const [isConfirmed, setConfirmed] = useState (false);
-const onButtonClick = (name: string) => {setTabName (name)};
-const onClickRegister = () => {setConfirmed(true)};
-
-    return !isConfirmed ? (
-     <div className='login-wrapper'>
-<Header onClick={onButtonClick} activeTab={tabName} />
-{tabName === 'login' ? (
-    <LoginForm onClick={onButtonClick} onConfirmClick={onClickRegister} />
-): (
-    <RegistrationForm onClick={onButtonClick} onConfirmClick={onClickRegister} />
-)}
-
-     </div>
-    ) : (
-       <Confirmation />
-)
-    }
-
-export default Login
+export default LoginForm
 

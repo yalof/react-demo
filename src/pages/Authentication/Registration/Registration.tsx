@@ -6,14 +6,13 @@ import Input from '../../../components/Input';
 type RegistrationFormProps = {
     onClick: (name: string) => void;
     onConfirmClick: () => void;
-    
 }
 
 const RegistrationForm: FC<RegistrationFormProps> = ({
     onClick,
     onConfirmClick,
- 
 }) => {
+
     const [email, setEmail] = useState ('');
     const [pass, setPass] = useState ('');
     const [emailError, setEmailError] = useState ('');
@@ -65,9 +64,9 @@ if (setPass(event.target.value) != setPassConfirm(event.target.value)){
 }
     }
     
-
     return (<div className='login-wrapper'>
 <form className="login-form">
+    
     <div>
         <p>User name</p>
         <Input type='text' required='required'/>

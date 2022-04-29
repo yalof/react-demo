@@ -7,7 +7,7 @@ const CardPost = (props: any) => {
 return (
     <div className='card-post'>
       <img src={props.image ? props.image : img} className="card-img"/>
-      <h4 className="card-title">{props.title}</h4>
+      <h1 className="card-title">{props.title}</h1>
       <p className="card-text">{props.text}</p>
       <p className="card-date">{props.date}</p>
   </div>
