@@ -1,23 +1,30 @@
 .info-wrapper {
-  background-color: rgb(207, 202, 202);
   height: 100vh;
   display: flex;
   flex-direction: column;
   gap: 30px;
+  padding: 20px 35px;
 }
-
 .dark {
-  background-color: rgba(26, 26, 26, 0.929);
-  color: rgb(255, 254, 254);
+  background-color: #240915;
 }
 
-.info-title {
+.info-wrap {
   display: flex;
   flex-direction: column;
-  color: #465cab;
-  margin-left: 35px;
+  gap: 30px;
+  color: #5d5485;
+}
+.info-title {
+  font-size: 24px;
+  padding-left: 0px;
+  color: #5d5485;
+  font-weight: 700;
 }
 
+.dark .info-title {
+  color: white;
+}
 .btnInfo {
   margin-right: 8px;
   padding: 8px;
@@ -31,17 +38,22 @@
   cursor: pointer;
   font-family: "Courier";
 }
+
 .active-tabs {
-  background-color: #465cab;
+  background-color: #5d5485;
+}
+
+.dark .active-tabs {
+  background-color: #fdd892;
 }
 
 .info-content-wrapper {
-  background-color: rgb(211, 212, 212);
+  background-color: gray;
   width: 30%;
   padding: 20px;
-  margin-top: 30px;
+
   border-radius: 10px;
-  color: gray;
+  color: white;
   font-size: 12px;
   font-family: "Courier";
 }

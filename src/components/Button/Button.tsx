@@ -1,11 +1,16 @@
-import React from 'react';
+import React, {FC} from 'react';
 import './Button.css';
 
-
-const Button = (props:any) => {
-    return  <button type='submit' disabled={props.disabled} onClick={props.onClick} className={props.className}> {props.btnText} </button>
+type ButtonProps = {
+    value?: string;
+    disabled?: boolean;
+    onClick?: () => void;
+    className: string;
+    btnText?: string;
+  };
+  
+const Button: FC<ButtonProps> = ({value, disabled, onClick, className, btnText}) => {
+    return  <button value={value} type='submit' disabled={disabled} onClick={onClick} className={className}> {btnText} </button>
 };
-
-
 
     export default Button

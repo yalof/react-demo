@@ -15,10 +15,9 @@ const activeTab = (index: any) => {
 setTabName (index)
 }
     return (
-    <div className={classNames('info-wrapper light', {['info-wrapper dark'] : !isLightTheme})}> 
-        <HeaderMenu /> 
-        <div className='info-title'>
-            <h1>Information</h1>
+      <div className={classNames( {['info-wrapper']:isLightTheme}, {[' info-wrapper dark'] : !isLightTheme})}>
+        <div className='info-wrap'>
+            <div className='info-title'>Information</div>
           <div className='btnsInfo'>
         <Button className={tabName === 1 ? 'btnInfo active-tabs': 'btnInfo'} btnText='Tab 1' onClick={()=>activeTab(1)}/>
         <Button className={tabName === 2 ? 'btnInfo active-tabs': 'btnInfo'} btnText='Tab 2' onClick={()=>activeTab(2)}/>

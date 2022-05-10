@@ -1,15 +1,33 @@
 header {
+  position: sticky;
   display: flex;
-  box-sizing: border-box;
   justify-content: space-between;
-  color: #465cab;
+  align-items: center;
+  top: 0;
+  width: 100%;
+  background-color: #240915;
+  color: #fdd892;
   font-size: 18px;
-  align-items: flex-end;
 }
+
 #page-wrap {
   box-sizing: border-box;
-  align-items: flex-end;
+  display: flex;
+  justify-content: space-between;
+  width: 85%;
+  padding: 15px 10px 10px 0px;
+  align-items: center;
+}
+#page-wrap p {
   padding-left: 10px;
-  padding-top: 10px;
-  width: 80%;
+  font-weight: 500;
+}
+.toggleHeader {
+  padding-top: 15px;
+  padding-right: 20px;
+}
+
+.user {
+  display: flex;
+  align-items: center;
 }

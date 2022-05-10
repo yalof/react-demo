@@ -1,22 +1,29 @@
 import React from "react";
 import { elastic as HeaderMenu } from "react-burger-menu";
 import "./BurgerMenu.css";
+import {NavLink} from 'react-router-dom'
+
 
 export default (props: any) => {
+  const onOutClick = () => {
+    localStorage.setItem('isLoggedIn', '');
+    window.location.replace('/') 
+  }
+  
   return (
     <HeaderMenu>
-      <a className="menu-item" href="/all posts">
-        All posts
-      </a>
-      <a className="menu-item" href="/my posts">
+      <NavLink className="menu-item" to="info">
+        Information
+      </NavLink>
+      <NavLink className="menu-item" to="cards-list">
         My posts
-      </a>
-      <a className="menu-item" href="/add posts">
+      </NavLink>
+      <NavLink className="menu-item" to="#">
         Add posts
-      </a>
-      <a className="menu-item" href="/log out">
+      </NavLink>
+      <NavLink className="menu-item" to='' onClick={onOutClick}>
         Log out
-      </a>
+      </NavLink>
     </HeaderMenu>
   );
 };
