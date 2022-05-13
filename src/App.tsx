@@ -16,11 +16,12 @@ import classNames from 'classnames';
 
 
 function App() {
-const [theme, setTheme] = useState (Theme.Light)
+const [theme, setTheme] = useState <Theme> (Theme.Light)
 const isLightTheme = theme ===Theme.Light;
 const onChangeTheme = (value: Theme) => {
 setTheme(value);
 }
+
   return (
 <ThemeModeProvider theme={theme} onChangeTheme={onChangeTheme}>
  <div className='App'>

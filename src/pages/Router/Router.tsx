@@ -1,5 +1,5 @@
 import React from "react";
-import {Route, BrowserRouter, Routes} from 'react-router-dom';
+import {Route, BrowserRouter, Routes, Navigate} from 'react-router-dom';
 import HeaderMenu from '../../components/HeaderMenu'
 import Information from "../Information";
 import Posts from '../Posts';
@@ -21,6 +21,7 @@ const Router = () => {
             <Route path={'cards-list'} element={<Posts />}/>
             <Route path={'cards-list/:id'} element={<Content/>}/>
             <Route path={'info'} element={<Information/>}/>
+            <Route path='*' element={<Navigate to="/" replace/>}/>
         </Route>
         </Routes>
      ) : ( 
