@@ -2,28 +2,22 @@ import React from 'react';
 import './App.css';
 import Posts from './pages/Posts';
 import Confirmation from './pages/Confirmation';
-import Login from './pages/Login';
-import Registration from './pages/Registration';
+import Login from './pages/Authentication/Login';
+import Registration from './pages/Authentication/Registration';
 import CardPost from './components/CardPost';
 import Content from './pages/Content/Content';
 import Template from './pages/Template';
-//import CardPost from './components/CardPost';
+import HeaderMenu from './components/HeaderMenu/'
+
 
 
 function App() {
   return (
-   
-   <Content cards={modelCard}/>
-    
-
-      /*<Login />*/
-    
-    
+/*<HeaderMenu/>*/
+   /*<Content cards={modelCard}/>*/
+      <Login />
     /*<Confirmation />*/
-
-  
-    /*<Registration />*/
-  
+   /* <Registration />*/
 /*<Template />*/
   
   );

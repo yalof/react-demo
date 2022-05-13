@@ -1,6 +1,6 @@
 body {
-  background-color: rgba(202, 224, 239, 0.735);
-  width: 70%;
+  background-color: rgba(128, 128, 128, 0.16);
+  width: 60%;
   margin: 0 auto;
 }
 .posts-wrapper {
@@ -24,15 +24,18 @@ body {
   padding: 10px 10px;
 }
 .card-img {
-  width: 200px;
+  width: 70%;
   border-radius: 10px;
   margin: 0 auto;
 }
 
 .card-text {
-  font-size: 14px;
+  font-size: 12px;
   color: rgb(121, 119, 119);
+  margin: 0;
 }
 .card-date {
   color: rgb(70, 70, 229);
+  margin: 10px 0 0;
+  font-size: 12px;
 }

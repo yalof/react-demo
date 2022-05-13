@@ -1,0 +1,17 @@
+.btnHeader {
+  font-weight: bold;
+  font-size: 28px;
+}
+.active {
+  color: rgb(3, 3, 181);
+}
+.wrapperHeader {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.line {
+  border-right: 2px solid #465cab;
+  height: 30px;
+}

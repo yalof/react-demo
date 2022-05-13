@@ -1,5 +1,5 @@
 .login-wrapper {
-  margin-top: 100px;
+  margin-top: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -9,25 +9,18 @@
   font-family: "Courier";
 }
 
-.login-title {
-  display: flex;
-  flex-direction: row;
-  gap: 10px;
-}
-
-button .login-title_Login {
-  background-color: none;
-  border: none;
-}
-button .login-title_Registration {
-  background-color: none;
-  border: none;
-}
-
-.line {
-  border-right: 2px solid #465cab;
-  height: 30px;
-  margin-top: 50px;
+.btnLoginConfirm {
+  margin-top: 30px;
+  padding: 8px;
+  width: 180px;
+  border: 2px solid;
+  outline: none;
+  border-radius: 50px;
+  text-align: center;
+  background-color: #465cab;
+  color: white;
+  cursor: pointer;
+  font-family: "Courier";
 }
 
 .login-forgot {
@@ -36,14 +29,25 @@ button .login-title_Registration {
   justify-content: space-between;
   align-items: center;
   gap: 10px;
+  font-size: 12px;
 }
 .login-reset {
   color: #465cab;
   text-decoration: none;
+  font-weight: bold;
 }
 
 form {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.err {
+  color: red;
+  font-size: 12px;
+}
+
+.login-form {
+  max-width: 180px;
 }

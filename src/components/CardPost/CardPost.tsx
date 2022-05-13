@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../components/CardPost/CardPost.css';
+import './CardPost.css';
 
 
 const CardPost = (props: any) => {
@@ -7,7 +7,7 @@ const CardPost = (props: any) => {
 return (
     <div className='card-post'>
       <img src={props.image ? props.image : img} className="card-img"/>
-      <h2 className="card-title">{props.title}</h2>
+      <h4 className="card-title">{props.title}</h4>
       <p className="card-text">{props.text}</p>
       <p className="card-date">{props.date}</p>
   </div>
