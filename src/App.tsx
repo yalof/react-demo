@@ -1,27 +1,39 @@
-import React from 'react';
+import React, {FC} from 'react';
 import './App.css';
 import Posts from './pages/Posts';
 import Confirmation from './pages/Confirmation';
-import Login from './pages/Authentication/Login';
-import Registration from './pages/Authentication/Registration';
 import CardPost from './components/CardPost';
 import Content from './pages/Content/Content';
 import Template from './pages/Template';
-import HeaderMenu from './components/HeaderMenu/'
-
-
+import HeaderMenu from './components/HeaderMenu/';
+import Authorization from './pages/Authentication';
+import Information from './pages/Information';
+import {ThemeModeProvider} from './context/ThemeModeProvider';
+import {Theme} from './context/themeModeContext';
+import {useState} from 'react';
 
 function App() {
+const [theme, setTheme] = useState (Theme.Light)
+const onChangeTheme = (value: Theme) => {
+setTheme(value);
+}
+
   return (
-/*<HeaderMenu/>*/
-   /*<Content cards={modelCard}/>*/
-      <Login />
-    /*<Confirmation />*/
-   /* <Registration />*/
-/*<Template />*/
-  
+<ThemeModeProvider theme={theme} onChangeTheme={onChangeTheme}>
+      <div className='App'>
+<Authorization />
+</div>
+</ThemeModeProvider>
   );
 }
+
+
+/*<HeaderMenu/>*/
+   /*<Content cards={modelCard}/>*/
+      /*<Login />*/
+    /*<Confirmation />*/
+   /* <Registration />*/
+
 
 const modelCard = [
   {

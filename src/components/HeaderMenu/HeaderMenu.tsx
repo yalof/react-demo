@@ -7,7 +7,7 @@ const HeaderMenu = () => {
     <header id="outer-container">
       <BurgerMenu pageWrapId={'page-wrap'} outerContainerId={'outer-container'} />
       <div id="page-wrap">
-      <FontAwesomeIcon icon="fa-regular fa-user"/> <p>Username</p> 
+      <FontAwesomeIcon icon= "user"/> <p>Username</p> 
       </div>
     </header>
   );

@@ -1,0 +1,54 @@
+.info-wrapper {
+  background-color: rgb(207, 202, 202);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.dark {
+  background-color: rgba(26, 26, 26, 0.929);
+  color: rgb(255, 254, 254);
+}
+
+.info-title {
+  display: flex;
+  flex-direction: column;
+  color: #465cab;
+  margin-left: 35px;
+}
+
+.btnInfo {
+  margin-right: 8px;
+  padding: 8px;
+  width: 70px;
+  border: none;
+  outline: none;
+  border-radius: 50px;
+  text-align: center;
+  background-color: gray;
+  color: white;
+  cursor: pointer;
+  font-family: "Courier";
+}
+.active-tabs {
+  background-color: #465cab;
+}
+
+.info-content-wrapper {
+  background-color: rgb(211, 212, 212);
+  width: 30%;
+  padding: 20px;
+  margin-top: 30px;
+  border-radius: 10px;
+  color: gray;
+  font-size: 12px;
+  font-family: "Courier";
+}
+.info-content {
+  display: none;
+}
+
+.active-content {
+  display: block;
+}
