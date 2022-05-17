@@ -2,6 +2,8 @@ import React, {FC, useEffect, useState } from 'react';
 import './Login.css';
 import Button from '../../../components/Button';
 import Input from '../../../components/Input';
+import { useDispatch, useSelector } from 'react-redux';
+
 
 
 
@@ -16,11 +18,18 @@ const LoginForm: FC<LoginFormProps> = ({
     onConfirmClick,
  
 }) => {
+   const onSubmit=(event: any)=> {
+    event.preventDefault();
+   } 
+    
 const [email, setEmail] = useState ('');
 const [pass, setPass] = useState ('');
 const [emailError, setEmailError] = useState ('');
 const [passError, setPassError] = useState ('');
 const [formValid, setFormValid] = useState (false);
+
+const dispatch = useDispatch();
+const value = useSelector((state: any) => state.value)
 
 useEffect(()=> {
 if (emailError || passError) {
@@ -55,6 +64,11 @@ const passValid = (event: any) => {
     }
 }
 
+const onClickRed = (isPlus: boolean) => {
+    const PLUS_ACTION = { type: "counter/incremented" };
+    const MINUS_ACTION = { type: "counter/decremented" };
+    dispatch(isPlus ? PLUS_ACTION : MINUS_ACTION);
+  };
 
 
 return ( 
@@ -77,7 +91,9 @@ return (
     <p className="login-forgot-text">Forgot your password?</p>
     <a href="#reset" className="login-reset">Reset password</a>
 </div>
-   
+   <Button className='btm' value={'Plus'} onClick={()=> onClickRed( true)} btnText='Plus'/>
+   <Button className='btm' value={'Minus'} onClick={()=> onClickRed(false)}btnText='Minus'/>
+   <div style={{fontSize: 20}}> {value}</div>
 </form>
 )
 }
