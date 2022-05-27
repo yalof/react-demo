@@ -1,0 +1,31 @@
+.btnsCardFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.btnSave {
+  margin-left: 30px;
+}
+
+.btnLike,
+.btnDislike,
+.btnSave {
+  color: #5d54854f;
+}
+.btnEye {
+  color: #5d5485;
+}
+
+.activeBtn {
+  color: #5d5485;
+}
+
+.dark .btnLike,
+.dark .btnSave,
+.dark .btnDislike,
+.dark .btnEye {
+  color: #fdd892;
+}

@@ -71,7 +71,7 @@ const getUser: GetUser = (id, users) => {
 */
 
 //// Задачи
-
+/*
 type Country = {
   country: string;
   abbreviation: string;
@@ -240,12 +240,19 @@ filterAnimalUsers(users);
 // slice.sort
 // 5. Создать функцию, которая бы принимала массив пользователей и отдавала бы  строку с названиями марок автомобилей через запятую
 
-type StrCars = (users: User[]) => string;
+type StrCars = (users: User[]) => string[];
 const strCars: StrCars = (arr) => {
-  return arr
-    .map((i) => i.cars)
-    .slice()
-    .filter((i) => i)
-    .join(",");
+  return arr.map((i) => `${i.cars}`);
 };
-strCars(users);
+strCars(users);*/
+
+export type Card = {
+  id?: string;
+  image?: string;
+  title: string;
+  text: string;
+  date: string;
+  onClick?: () => void;
+  likeStatus?: string | null;
+  saved: boolean;
+};
