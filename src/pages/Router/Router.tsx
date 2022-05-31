@@ -5,9 +5,9 @@ import Information from "../Information";
 import Posts from "../Posts";
 import Authorization from "../Authentication/Authorization";
 import Confirmation from "../Confirmation";
-import RegistrationForm from "../Authentication/Registration";
 import Content from "../Content/Content";
 import { AuthSelector } from "../../redux/reducers/authReducer";
+import { useSelector } from "react-redux";
 
 const Router = () => {
   //const isLoggedIn = useSelector(AuthSelector.getLogStatus);
