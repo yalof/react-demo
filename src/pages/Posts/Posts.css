@@ -19,6 +19,7 @@
   border: 1px solid #9088b629;
   padding: 10px 10px;
   box-shadow: 0px 0px 20px 0px #5d5485;
+  cursor: pointer;
 }
 
 .card-img {

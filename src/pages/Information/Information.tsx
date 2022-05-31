@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "./Information.css";
-import HeaderMenu from "../../components/HeaderMenu";
 import classNames from "classnames";
 import { Theme, useThemeContext } from "../../context/themeModeContext";
 import Button from "../../components/Button";

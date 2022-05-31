@@ -6,12 +6,18 @@ type PostState = {
   selectedImg: string | Array<string> | null;
   cardsList: Card[];
   postsTabs: string;
+  selectedPostt: Card | null;
+  isAllPostsLoading: boolean;
+  isSinglePostLoading: boolean;
 };
 const initialState: PostState = {
   selectedPost: null,
   selectedImg: "",
   cardsList: [],
   postsTabs: "all",
+  selectedPostt: null,
+  isAllPostsLoading: false,
+  isSinglePostLoading: false,
 };
 
 const postsSlice = createSlice({
@@ -24,7 +30,7 @@ const postsSlice = createSlice({
     setSelectedImg: (state, action) => {
       state.selectedImg = action.payload;
     },
-    loadData: (state, action) => {
+    setPosts: (state, action) => {
       state.cardsList = action.payload.map((card: Card) => {
         return {
           ...card,
@@ -48,19 +54,38 @@ const postsSlice = createSlice({
     setPostsTabs: (state, action) => {
       state.postsTabs = action.payload;
     },
+    loadData: (state, action: PayloadAction<undefined>) => {},
+    loadPost: (state, action: PayloadAction<string>) => {},
+    setPost: (state, action: PayloadAction<Card>) => {
+      state.selectedPost = action.payload;
+    },
+    setAllPostsLoading: (state, action) => {
+      state.isAllPostsLoading = action.payload;
+    },
+    setSinglePostLoading: (state, action) => {
+      state.isSinglePostLoading = action.payload;
+    },
   },
 });
 export const {
   setSelectedPost,
   setSelectedImg,
+  setPosts,
   loadData,
+  loadPost,
+  setPost,
   setSavePost,
   setLikePost,
   setPostsTabs,
+  setAllPostsLoading,
+  setSinglePostLoading,
 } = postsSlice.actions;
 
 export default postsSlice.reducer;
 export const PostsSelectors = {
+  getSinglePostLoading: (state: any) => state.posts.isSinglePostLoading,
+  getAllPostsLoading: (state: any) => state.posts.isAllPostsLoading,
+  getSelectedPostt: (state: any) => state.posts.selectedPostt,
   getSelectedPost: (state: any) => state.posts.selectedPost,
   getSelectedImg: (state: any) => state.posts.selectedImg,
   getPostsTabs: (state: any) => state.posts.postsTabs,

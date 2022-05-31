@@ -14,12 +14,10 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   PostsSelectors,
   setSelectedImg,
-  setSelectedPost,
 } from "../../redux/reducers/postsReducer";
 import { setLikePost, setSavePost } from "../../redux/reducers/postsReducer";
 import { Card as CardType } from "../../common/types";
 import PopUp from "../PopUp";
-import { useNavigate } from "react-router-dom";
 import Button from "../../components/Button";
 
 type CardPostProps = {
@@ -28,7 +26,7 @@ type CardPostProps = {
   title: string;
   text: string;
   date: string;
-  //onClick?: () => void;
+  onClick?: (event: any) => void;
   likeStatus?: string | null;
   saved?: boolean;
   // data: CardType;
@@ -42,17 +40,22 @@ const CardPost: FC<CardPostProps> = ({
   id,
   likeStatus,
   saved,
-  // onClick,
+  onClick,
 }) => {
   const { theme, onChangeTheme = () => {} } = useThemeContext();
   const isLightTheme = theme === Theme.Light;
   //const { id, image, title, text, date, likeStatus, saved } = data;
-  // const navigate = useNavigate();
+
   const dispatch = useDispatch();
-  // const selectedCard = useSelector(PostsSelectors.getSelectedPost);
+
+  const selectedImg = useSelector(PostsSelectors.getSelectedImg);
+
+  const [isVisible, setVisible] = useState(false);
   const onEyeClick = (item: any) => {
-    dispatch(setSelectedImg(item));
+    dispatch(setSelectedImg(item.image));
+    setVisible(!isVisible);
   };
+
   const img = "https://slovnet.ru/wp-content/uploads/2018/11/21-42.jpg";
 
   const handleButtonClick = (action: string) => {
@@ -86,7 +89,6 @@ const CardPost: FC<CardPostProps> = ({
             onClick={() => handleButtonClick("like")}
             btnText={<FontAwesomeIcon icon={faThumbsUp} />}
           />
-
           <Button
             className={classNames("btnDislike", {
               ["activeBtn"]: likeStatus === "dislike",
@@ -99,15 +101,17 @@ const CardPost: FC<CardPostProps> = ({
             onClick={() => handleButtonClick(saved ? "unset" : "save")}
             btnText={<FontAwesomeIcon icon={faFloppyDisk} />}
           />
-
           <Button
             className="btnEye"
             btnText={
-              <FontAwesomeIcon icon={faEye} onClick={() => onEyeClick(image)} />
+              <FontAwesomeIcon icon={faEye} onClick={() => onEyeClick(img)} />
             }
           />
         </div>
       </div>
+      <PopUp isVisible={isVisible}>
+        {selectedImg && <img src={selectedImg} alt="image" />}
+      </PopUp>
     </div>
   );
 };

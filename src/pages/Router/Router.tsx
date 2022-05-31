@@ -7,12 +7,11 @@ import Authorization from "../Authentication/Authorization";
 import Confirmation from "../Confirmation";
 import RegistrationForm from "../Authentication/Registration";
 import Content from "../Content/Content";
-import { useSelector } from "react-redux";
 import { AuthSelector } from "../../redux/reducers/authReducer";
 
 const Router = () => {
-  const isLoggedIn = useSelector(AuthSelector.getLogStatus);
-  //const isLoggedIn = localStorage.getItem("isLoggedIn");
+  //const isLoggedIn = useSelector(AuthSelector.getLogStatus);
+  const isLoggedIn = localStorage.getItem("isLoggedIn");
   return (
     <BrowserRouter>
       {isLoggedIn ? (

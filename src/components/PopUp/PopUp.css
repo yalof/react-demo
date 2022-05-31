@@ -9,8 +9,11 @@
   align-items: center;
   justify-content: center;
   transform: scale(0);
+  display: none;
 }
-
+.visible {
+  display: block;
+}
 /*.popUpWrapper .active {
   transform: scale(1);
 }*/

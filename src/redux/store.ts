@@ -1,10 +1,8 @@
-//import { legacy_createStore as createStore, compose } from "redux";
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import { compose } from "redux";
 import postsReducer from "./reducers/postsReducer";
 import authReducer from "./reducers/postsReducer";
 import createSagaMiddleware, { runSaga } from "redux-saga";
-import { applyMiddleware } from "redux";
 import rootSaga from "./sagas/rootSaga";
 
 declare global {

@@ -1,59 +1,35 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Content.css";
 import CardPost from "../../components/CardPost";
 import "./Content.css";
 import { useParams } from "react-router-dom";
-//import {useState, useEffect} from 'react';
 import { Theme, useThemeContext } from "../../context/themeModeContext";
 import classNames from "classnames";
+import { useDispatch, useSelector } from "react-redux";
+import { PostsSelectors, loadPost } from "../../redux/reducers/postsReducer";
+import Lottie from "react-lottie";
+import animationData from "../../lotties/wine-glass-filling-white.json";
 
 const Content = () => {
   const { theme, onChangeTheme = () => {} } = useThemeContext();
   const isLightTheme = theme === Theme.Light;
-
-  const modelCard = [
-    {
-      id: 0,
-      image: "https://demotivation.ru/wp-content/uploads/2020/12/000000.jpg",
-      text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry...",
-      date: "2021-12-12",
-      lesson_num: 0,
-      title: "What is Lorem Ipsum?",
-      author: 0,
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: animationData,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice",
     },
-    {
-      id: 1,
-      image: undefined,
-      text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry...",
-      date: "2021-12-12",
-      lesson_num: 0,
-      title: "What is Lorem Ipsum?",
-      author: 0,
-    },
-    {
-      id: 2,
-      image:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmB_84BeMHm-xxiLGyPza_graZHtNqF75zuA&usqp=CAU",
-      text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry...",
-      date: "2021-12-12",
-      lesson_num: 0,
-      title: "What is Lorem Ipsum?",
-      author: 0,
-    },
-    {
-      id: 3,
-      image: "https://slovnet.ru/wp-content/uploads/2018/11/3-38.jpg",
-      text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry...",
-      date: "2021-12-12",
-      lesson_num: 0,
-      title: "What is Lorem Ipsum?",
-      author: 0,
-    },
-  ];
-
-  const { id } = useParams();
-
-  const newItem = modelCard.find((post: any) => post.id == id);
+  };
+  const { id: cardId } = useParams();
+  const dispatch = useDispatch();
+  const singlePostLoading = useSelector(PostsSelectors.getSinglePostLoading);
+  useEffect(() => {
+    if (cardId) {
+      dispatch(loadPost(cardId));
+    }
+  }, [cardId]);
+  const cardData = useSelector(PostsSelectors.getSelectedPost);
 
   return (
     <div
@@ -64,14 +40,18 @@ const Content = () => {
     >
       <div className="contentTitle">Content title</div>
       <div className="cardPostContent">
-        {newItem && (
-          <CardPost
-            key={id}
-            image={newItem.image}
-            title={newItem.title}
-            text={newItem.text}
-            date={newItem.date}
-          />
+        {singlePostLoading ? (
+          <Lottie options={defaultOptions} height={300} width={300} />
+        ) : (
+          cardData && (
+            <CardPost
+              id={cardData.id}
+              image={cardData.image}
+              title={cardData.title}
+              text={cardData.text}
+              date={cardData.date}
+            />
+          )
         )}
       </div>
     </div>

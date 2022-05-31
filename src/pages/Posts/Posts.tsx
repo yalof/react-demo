@@ -1,25 +1,22 @@
-import React, { FC } from "react";
+import React from "react";
 import "../../components/CardPost/CardPost.css";
 import "./Posts.css";
-import CardPost from "../../components/CardPost";
-import { useParams, Link, NavLink } from "react-router-dom";
+import Lottie from "react-lottie";
+import animationData from "../../lotties/wine-glass-filling-white.json";
 import classNames from "classnames";
 import { Theme, useThemeContext } from "../../context/themeModeContext";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import CardList from "../../components/CardList";
 import {
   PostsSelectors,
   setPostsTabs,
-  setSelectedImg,
 } from "../../redux/reducers/postsReducer";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { loadData } from "../../redux/reducers/postsReducer";
-import PopUp from "../../components/PopUp";
 import Button from "../../components/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faEye,
   faFloppyDisk,
   faThumbsDown,
   faThumbsUp,
@@ -28,61 +25,28 @@ import {
 const Posts = () => {
   const { theme, onChangeTheme = () => {} } = useThemeContext();
   const isLightTheme = theme === Theme.Light;
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: animationData,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice",
+    },
+  };
   const dispatch = useDispatch();
   const activeTab = useSelector(PostsSelectors.getPostsTabs);
   const cardsList = useSelector((state) =>
     PostsSelectors.getCards(state, activeTab)
   );
+
   const onBtnClick = (btn: any) => {
     dispatch(setPostsTabs(btn));
   };
   useEffect(() => {
-    dispatch(loadData(modelCard));
+    dispatch(loadData());
   }, []);
-  const selectedImg = useSelector(PostsSelectors.getSelectedImg);
 
-  const modelCard = [
-    {
-      id: 0,
-      image: "https://demotivation.ru/wp-content/uploads/2020/12/000000.jpg",
-      text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry...",
-      date: "2021-12-12",
-      lesson_num: 0,
-      title: "What is Lorem Ipsum?",
-      author: 0,
-    },
-    {
-      id: 1,
-      image: null,
-      text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry...",
-      date: "2021-12-12",
-      lesson_num: 0,
-      title: "What is Lorem Ipsum?",
-      author: 0,
-    },
-    {
-      id: 2,
-      image:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmB_84BeMHm-xxiLGyPza_graZHtNqF75zuA&usqp=CAU",
-      text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry...",
-      date: "2021-12-12",
-      lesson_num: 0,
-      title: "What is Lorem Ipsum?",
-      author: 0,
-    },
-    {
-      id: 3,
-      image: "https://slovnet.ru/wp-content/uploads/2018/11/3-38.jpg",
-      text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry...",
-      date: "2021-12-12",
-      lesson_num: 0,
-      title: "What is Lorem Ipsum?",
-      author: 0,
-    },
-  ];
-  //const selectedCard = useSelector(PostsSelectors.getSelectedPost);
-
-  //const [popUpActive, setPopUpActive] = useState(false);
+  const allPostsLoading = useSelector(PostsSelectors.getAllPostsLoading);
 
   return (
     <div
@@ -122,9 +86,14 @@ const Posts = () => {
           btnText="All"
         />
       </div>
-      <CardList data={cardsList} />
-      <PopUp>{selectedImg && <img src={selectedImg} alt="" />}</PopUp>
+
+      {allPostsLoading ? (
+        <Lottie options={defaultOptions} height={300} width={300} />
+      ) : (
+        <CardList data={cardsList} />
+      )}
     </div>
   );
 };
+
 export default Posts;

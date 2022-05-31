@@ -2,6 +2,7 @@ import { all, takeLatest, put } from "redux-saga/effects";
 import { PayloadAction } from "@reduxjs/toolkit";
 import { RegisterUser, registerUser } from "../reducers/authReducer";
 import { setLogStatus } from "../reducers/authReducer";
+
 function* registerUserSaga(action: PayloadAction<RegisterUser>) {
   const { payload } = action;
   console.log(payload);
