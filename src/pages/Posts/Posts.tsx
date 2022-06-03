@@ -6,31 +6,9 @@ import { useParams, Link, NavLink} from "react-router-dom";
 import classNames from 'classnames';
 import { Theme, useThemeContext } from '../../context/themeModeContext';
 import {useState, useEffect} from 'react'
+import CardList from '../../components/CardList'
 
 
-const CardList = (props: any) => {
-
-    const cardsList = props.data.map((item: any) => {
-      return (
-        <>
-        { 
-        // Как теперь убрать стили для ссылки-карточки? Карточки некрасиво отрисовываются 
-          <Link style={{ textDecoration: 'none' }} key={item.id} to={`/cards-list/${item.id}`}>
-        <CardPost
-          image={item.image}
-          title={item.title}
-          text={item.text}
-          date={item.date}
-        />
-        </Link>
-
-        }
-       </>
-      );
-    });
-    return <div className='postsWrapper'>{cardsList}</div>;
-  };
-  
 const Posts = () => {
   const {theme, onChangeTheme = () => {}} = useThemeContext();
   const isLightTheme = theme ===Theme.Light;

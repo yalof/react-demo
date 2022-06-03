@@ -237,7 +237,7 @@ const filterAnimalUsers: FilterAnimalUsers = (arr) => {
   return arr.filter((i) => i.animals);
 };
 filterAnimalUsers(users);
-
+// slice.sort
 // 5. Создать функцию, которая бы принимала массив пользователей и отдавала бы  строку с названиями марок автомобилей через запятую
 
 type StrCars = (users: User[]) => string;
