@@ -6,6 +6,7 @@
   gap: 30px;
   justify-content: center;
   height: 100vh;
+  text-decoration: none;
 }
 .card-post {
   box-sizing: border-box;
@@ -66,6 +67,15 @@
 .dark .postsTitle {
   color: #f8f2e7;
 }
+
+.postsContainer {
+  text-decoration: none;
+}
+
 .dark.postsContainer {
   background-color: #240915;
+}
+
+.linkCards {
+  text-decoration: none;
 }

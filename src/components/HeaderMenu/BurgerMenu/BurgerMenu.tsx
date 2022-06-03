@@ -5,7 +5,7 @@ import {NavLink} from 'react-router-dom'
 
 
 export default (props: any) => {
-  const onOutClick = () => {
+  const removeItem = () => {
     localStorage.setItem('isLoggedIn', '');
     window.location.replace('/') 
   }
@@ -21,7 +21,7 @@ export default (props: any) => {
       <NavLink className="menu-item" to="#">
         Add posts
       </NavLink>
-      <NavLink className="menu-item" to='' onClick={onOutClick}>
+      <NavLink className="menu-item" to='' onClick={removeItem}>
         Log out
       </NavLink>
     </HeaderMenu>
