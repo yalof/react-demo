@@ -2,8 +2,15 @@
   font-weight: bold;
   font-size: 28px;
 }
-.active {
-  color: rgb(3, 3, 181);
+
+.dark .btnHeader {
+  color: #5d5485;
+}
+.activeLink {
+  color: #5d5485;
+}
+.dark .activeLink {
+  color: aliceblue;
 }
 .wrapperHeader {
   display: flex;
@@ -12,6 +19,6 @@
 }
 
 .line {
-  border-right: 2px solid #465cab;
+  border-right: 2px solid #5d5485;
   height: 30px;
 }

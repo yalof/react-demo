@@ -4,12 +4,12 @@
   align-items: center;
   flex-direction: column;
   gap: 20px;
-  color: grey;
+  color: #5d5485;
   font-family: "Courier";
   height: 100vh;
 }
-.dark {
-  background-color: rgba(26, 26, 26, 0.929);
+.auth-wrapper.dark {
+  background-color: #240915;
   color: rgb(255, 254, 254);
 }
 
@@ -49,11 +49,11 @@
 }
 
 input:checked + .toggle {
-  background-color: #465cab;
+  background-color: #fdd892;
 }
 
 input:focus + .toggle {
-  box-shadow: 0 0 1px #465cab;
+  box-shadow: 0 0 1px #fdd892;
 }
 
 input:checked + .toggle:before {

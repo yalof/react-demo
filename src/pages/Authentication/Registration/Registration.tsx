@@ -2,6 +2,9 @@ import React, {FC, useEffect, useState} from 'react';
 import '../Login/Login.css';
 import Button from '../../../components/Button';
 import Input from '../../../components/Input';
+import { useNavigate } from 'react-router-dom';
+import classNames from 'classnames';
+import { Theme, useThemeContext } from '../../../context/themeModeContext';
 
 type RegistrationFormProps = {
     onClick: (name: string) => void;
@@ -9,9 +12,14 @@ type RegistrationFormProps = {
 }
 
 const RegistrationForm: FC<RegistrationFormProps> = ({
+    
     onClick,
     onConfirmClick,
+    
 }) => {
+    const {theme, onChangeTheme = () => {}} = useThemeContext();
+    const isLightTheme = theme ===Theme.Light;
+    const navigate = useNavigate()
 
     const [email, setEmail] = useState ('');
     const [pass, setPass] = useState ('');
@@ -21,6 +29,8 @@ const RegistrationForm: FC<RegistrationFormProps> = ({
     const [passConfirm, setPassConfirm] = useState ('');
     const [passErrorConfirm, setPassErrorConfirm] = useState ('');
     
+    
+
     useEffect(()=> {
     if (emailError || passError) {
         setFormValid(false)
@@ -55,6 +65,7 @@ const RegistrationForm: FC<RegistrationFormProps> = ({
     }
 
     const passValidConfirm = (event:any) => {
+        
         event.preventDefault();
         setPassConfirm(event.target.value);
 if (setPass(event.target.value) != setPassConfirm(event.target.value)){
@@ -63,8 +74,15 @@ if (setPass(event.target.value) != setPassConfirm(event.target.value)){
     setPassErrorConfirm('')
 }
     }
-    
-    return (<div className='login-wrapper'>
+  onConfirmClick = () => {
+        navigate("/confirm",  {
+            state: {
+              email,
+            },
+          });
+    };
+
+    return (<div className={classNames( {['login-wrapper']:isLightTheme}, {['login-wrapper dark'] : !isLightTheme})}>
 <form className="login-form">
     
     <div>
@@ -92,7 +110,7 @@ if (setPass(event.target.value) != setPassConfirm(event.target.value)){
 </form>
 <div className="login-forgot">
     <p className="login-forgot-text">If you have account you can</p>
-    <a href="#login" className="login-reset" onClick={() => onClick('login')}>Login</a>
+    <Button  className="btnLink" btnText='Login' onClick={() => onClick('login')}/>
 </div>
            </div>
            )

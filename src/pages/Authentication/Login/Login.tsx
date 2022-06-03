@@ -17,7 +17,7 @@ const LoginForm: FC<LoginFormProps> = ({
  
 }) => {
 const [email, setEmail] = useState ('');
-const [pass, setPass] = useState (Number);
+const [pass, setPass] = useState ('');
 const [emailError, setEmailError] = useState ('');
 const [passError, setPassError] = useState ('');
 const [formValid, setFormValid] = useState (false);

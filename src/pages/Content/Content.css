@@ -1,27 +1,17 @@
-body {
-  background-color: rgba(128, 128, 128, 0.16);
+.contentContainer {
+  padding: 20px 30px;
+  height: 100vh;
 }
 
-.content {
-  margin: 100px auto auto 100px;
-}
 .contentTitle {
-  color: #465cab;
+  font-size: 24px;
+  padding-left: 0px;
+  color: #5d5485;
+  font-weight: 700;
+}
+.dark .contentTitle {
+  color: #f8f2e7;
 }
 .cardPostContent {
-  width: 35%;
-  display: flex;
-  justify-content: center;
-  text-align: start;
-  background-color: aliceblue;
-  color: rgb(121, 119, 119);
-  font-family: "Courier";
-  border-radius: 10px;
-  border: 1px solid rgba(202, 224, 239, 0.735);
-  padding: 10px 10px;
-}
-.card-img {
-  width: 60%;
-  border-radius: 10px;
-  margin: 0 auto;
+  margin-top: 20px;
 }

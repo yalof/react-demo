@@ -4,19 +4,23 @@
   align-items: center;
   flex-direction: column;
   gap: 20px;
-  color: grey;
+  color: #5d5485;
   font-family: "Courier";
+}
+
+.dark .login-wrapper {
+  color: white;
 }
 
 .btnLoginConfirm {
   margin-top: 30px;
   padding: 8px;
   width: 180px;
-  border: 2px solid;
+  border: 2px solid #fdd892;
   outline: none;
   border-radius: 50px;
   text-align: center;
-  background-color: #465cab;
+  background-color: #5d5485;
   color: white;
   cursor: pointer;
   font-family: "Courier";
@@ -31,7 +35,7 @@
   font-size: 12px;
 }
 .login-reset {
-  color: #465cab;
+  color: #5d5485;
   text-decoration: none;
   font-weight: bold;
 }

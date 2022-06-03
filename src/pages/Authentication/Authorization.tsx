@@ -12,17 +12,14 @@ import { Theme, useThemeContext } from '../../context/themeModeContext';
 const Authorization = () => {
   const {theme, onChangeTheme = () => {}} = useThemeContext();
   const isLightTheme = theme ===Theme.Light;
-   
+
   const [tabName, setTabName] = useState ('login');
   const [isConfirmed, setConfirmed] = useState (false);
   const onButtonClick = (name: string) => {setTabName (name)};
   const onClickRegister = () => {setConfirmed(true)};
   
-
-  // Не переключается тема обратно на светлую с темной
-  
-      return !isConfirmed ? (
-        <div className={classNames({['auth-wrapper']:isLightTheme,}, {['auth-wrapper dark'] : !isLightTheme})}>
+      return  (
+        <div className={classNames( {['auth-wrapper']:isLightTheme}, {['auth-wrapper dark'] : !isLightTheme})}>
       <Toggle/>
       <Header onClick={onButtonClick} activeTab={tabName} />
   {tabName === 'login' ? (
@@ -30,10 +27,8 @@ const Authorization = () => {
   ):(
       <RegistrationForm onClick={onButtonClick} onConfirmClick={onClickRegister} />
   )}
-  
        </div>
-      ) : (
-         <Confirmation />
+     
   )
       }
     

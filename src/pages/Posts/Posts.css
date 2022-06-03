@@ -1,28 +1,26 @@
-body {
-  background-color: rgba(128, 128, 128, 0.16);
-  width: 60%;
-  margin: 0 auto;
-}
-.posts-wrapper {
-  padding: 20px 20px;
+.postsWrapper {
+  padding: 20px 30px;
   display: flex;
+  flex-direction: row;
   flex-wrap: wrap;
   gap: 30px;
-  justify-content: flex-start;
+  justify-content: center;
+  height: 100vh;
 }
 .card-post {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background-color: aliceblue;
-  width: 30%;
-  color: rgb(121, 119, 119);
+  width: 25%;
+  max-height: 350px;
   font-family: "Courier";
   border-radius: 10px;
-  border: 1px solid rgba(202, 224, 239, 0.735);
+  border: 1px solid #9088b629;
   padding: 10px 10px;
+  box-shadow: 0px 0px 20px 0px #5d5485;
 }
+
 .card-img {
   width: 70%;
   border-radius: 10px;
@@ -31,11 +29,43 @@ body {
 
 .card-text {
   font-size: 12px;
-  color: rgb(121, 119, 119);
+  color: #5d5485;
   margin: 0;
+  padding: 0;
+}
+
+.dark .card-text {
+  color: #f7f0e2;
 }
 .card-date {
-  color: rgb(70, 70, 229);
+  color: #5d5485;
   margin: 10px 0 0;
   font-size: 12px;
+  padding: 0;
+}
+.dark .card-date {
+  color: #fdd892;
+}
+
+.card-title {
+  font-size: 16px;
+  padding-left: 0px;
+  color: #5d5485;
+  font-weight: 600;
+}
+
+.dark .card-title {
+  color: #fdd892;
+}
+.postsTitle {
+  color: #5d5485;
+  padding: 10px 0 0 35px;
+  font-size: 24px;
+  font-weight: 700;
+}
+.dark .postsTitle {
+  color: #f8f2e7;
+}
+.dark.postsContainer {
+  background-color: #240915;
 }

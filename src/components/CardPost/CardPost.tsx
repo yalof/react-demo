@@ -1,18 +1,28 @@
-import React from 'react';
+import React, {FC} from 'react';
 import './CardPost.css';
+import classNames from 'classnames';
 
 
-const CardPost = (props: any) => {
-    const img ="https://images.pexels.com/photos/417173/pexels-photo-417173.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500";
+type CardPostProps = {
+  id?: string
+  image?: string
+  title: string
+  text: string
+  date: string
+  
+  }
+const CardPost: FC <CardPostProps> =  ({id, image, title, text, date}) => {
+  
+    const img ="https://s1.best-wallpaper.net/wallpaper/m/1907/Bridge-train-mountains-vector-art-picture_m.jpg";
 return (
-    <div className='card-post'>
-      <img src={props.image ? props.image : img} className="card-img"/>
-      <h1 className="card-title">{props.title}</h1>
-      <p className="card-text">{props.text}</p>
-      <p className="card-date">{props.date}</p>
+
+  <div className='card-post' key={id}>
+      <img src={image ? image : img} className="card-img" alt=''/>
+      <p className="card-title">{title}</p>
+      <p className="card-text">{text}</p>
+      <p className="card-date">{date}</p>
   </div>
 )
 }
-
 
 export default CardPost;

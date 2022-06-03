@@ -1,15 +1,22 @@
 .registration-wrapper {
-  margin-top: 100px;
+  padding-top: 100px;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   flex-direction: column;
   gap: 20px;
-  color: grey;
+  color: #5d5485;
   font-family: "Courier";
+  height: 100vh;
+}
+.dark .registration-wrapper {
+  background-color: #240915;
 }
 .registration-title {
-  color: #465cab;
+  color: #5d5485;
+}
+.dark .registration-title {
+  color: white;
 }
 .registration-text {
   display: flex;
@@ -18,17 +25,26 @@
   text-decoration: none;
   text-align: center;
 }
+.dark .registration-text {
+  color: white;
+}
 
 .btn-registration {
-  width: 10%;
   margin-top: 30px;
-  padding: 5px;
-  border: 2px solid;
+  padding: 8px;
+  width: 180px;
+  border: 2px solid #fdd892;
   outline: none;
   border-radius: 50px;
   text-align: center;
-  background-color: #465cab;
+  background-color: #5d5485;
   color: white;
   cursor: pointer;
   font-family: "Courier";
+}
+.btnLink {
+  font-family: "Courier";
+  color: #5d5485;
+  text-decoration: none;
+  font-weight: bold;
 }
