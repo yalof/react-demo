@@ -2,27 +2,27 @@ import React, { FC, useEffect, useState } from "react";
 import "../Login/Login.css";
 import Button from "../../../components/Button";
 import Input from "../../../components/Input";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import classNames from "classnames";
 import { Theme, useThemeContext } from "../../../context/themeModeContext";
-import { registerUser } from "../../../redux/reducers/authReducer";
+import {
+  registerUser,
+  setUserNameHeader,
+} from "../../../redux/reducers/authReducer";
 import { useDispatch } from "react-redux";
 
 type RegistrationFormProps = {
   onClick: (name: string) => void;
-  onConfirmClick: () => void;
 };
 
-const RegistrationForm: FC<RegistrationFormProps> = ({
-  onClick,
-  onConfirmClick,
-}) => {
+const RegistrationForm: FC<RegistrationFormProps> = ({ onClick }) => {
   const { theme, onChangeTheme = () => {} } = useThemeContext();
   const isLightTheme = theme === Theme.Light;
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
   const [pass, setPass] = useState("");
   const [emailError, setEmailError] = useState("");
   const [passError, setPassError] = useState("");
@@ -76,13 +76,11 @@ const RegistrationForm: FC<RegistrationFormProps> = ({
       setPassErrorConfirm("");
     }
   };
-  onConfirmClick = () => {
-    dispatch(registerUser({ name: "", password: pass, email: email }));
-    navigate("/confirm", {
-      state: {
-        email,
-      },
-    });
+
+  const onSubmit = (event: any) => {
+    event.preventDefault();
+    //setFormValid(true);
+    dispatch(registerUser({ name, password: pass, email: email }));
   };
 
   return (
@@ -95,7 +93,12 @@ const RegistrationForm: FC<RegistrationFormProps> = ({
       <form className="login-form">
         <div>
           <p>User name</p>
-          <Input type="text" required="required" />
+          <Input
+            type="text"
+            required="required"
+            value={name}
+            onChange={(event: any) => setName(event.target.value)}
+          />
         </div>
         <div>
           <p>Email</p>
@@ -132,7 +135,7 @@ const RegistrationForm: FC<RegistrationFormProps> = ({
             disabled={!formValid}
             className="btnLoginConfirm"
             btnText="Login"
-            onClick={onConfirmClick}
+            onClick={onSubmit}
           />
         </div>
       </form>

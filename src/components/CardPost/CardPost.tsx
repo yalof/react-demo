@@ -33,7 +33,7 @@ type CardPostProps = {
 };
 
 const CardPost: FC<CardPostProps> = ({
-  image,
+  image = "https://slovnet.ru/wp-content/uploads/2018/11/21-42.jpg",
   title,
   text,
   date,
@@ -51,12 +51,11 @@ const CardPost: FC<CardPostProps> = ({
   const selectedImg = useSelector(PostsSelectors.getSelectedImg);
 
   const [isVisible, setVisible] = useState(false);
-  const onEyeClick = (item: any) => {
-    dispatch(setSelectedImg(item.image));
+  const onEyeClick = (event: any) => {
+    dispatch(setSelectedImg(image));
     setVisible(!isVisible);
+    event.stopPropagation();
   };
-
-  const img = "https://slovnet.ru/wp-content/uploads/2018/11/21-42.jpg";
 
   const handleButtonClick = (action: string) => {
     if (action == "like" || action == "dislike") {
@@ -75,7 +74,7 @@ const CardPost: FC<CardPostProps> = ({
         { ["card-post dark"]: !isLightTheme }
       )}
     >
-      <img src={image ? image : img} className="card-img" alt="" />
+      <img src={image} className="card-img" alt="" />
       <p className="card-title">{title}</p>
       <p className="card-text">{text}</p>
       <div className="iconsFooter">
@@ -103,15 +102,16 @@ const CardPost: FC<CardPostProps> = ({
           />
           <Button
             className="btnEye"
-            btnText={
-              <FontAwesomeIcon icon={faEye} onClick={() => onEyeClick(img)} />
-            }
+            onClick={(event) => onEyeClick(event)}
+            btnText={<FontAwesomeIcon icon={faEye} />}
           />
         </div>
       </div>
-      <PopUp isVisible={isVisible}>
-        {selectedImg && <img src={selectedImg} alt="image" />}
-      </PopUp>
+      {selectedImg && (
+        <PopUp isVisible={isVisible}>
+          <img src={selectedImg} alt="image" />
+        </PopUp>
+      )}
     </div>
   );
 };

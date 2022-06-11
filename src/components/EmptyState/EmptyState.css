@@ -1,0 +1,12 @@
+.emptyWrapper {
+  padding: 100px 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.emptyTitle {
+  color: #5d5485;
+  font-weight: 700;
+  font-size: 30px;
+}

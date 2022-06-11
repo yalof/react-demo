@@ -3,17 +3,13 @@ import "./Login.css";
 import Button from "../../../components/Button";
 import Input from "../../../components/Input";
 import { useDispatch, useSelector } from "react-redux";
+import { loginUser } from "../../../redux/reducers/authReducer";
 
 type LoginFormProps = {
   onClick: (name: string) => void;
-  onConfirmClick: () => void;
 };
 
-const LoginForm: FC<LoginFormProps> = ({ onClick, onConfirmClick }) => {
-  const onSubmit = (event: any) => {
-    event.preventDefault();
-  };
-
+const LoginForm: FC<LoginFormProps> = ({ onClick }) => {
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
   const [emailError, setEmailError] = useState("");
@@ -60,6 +56,11 @@ const LoginForm: FC<LoginFormProps> = ({ onClick, onConfirmClick }) => {
     }
   };
 
+  const onSubmitForm = (event: any) => {
+    event.preventDefault();
+    dispatch(loginUser({ email: email, password: pass }));
+  };
+
   const onClickRed = (isPlus: boolean) => {
     const PLUS_ACTION = { type: "counter/incremented" };
     const MINUS_ACTION = { type: "counter/decremented" };
@@ -93,7 +94,7 @@ const LoginForm: FC<LoginFormProps> = ({ onClick, onConfirmClick }) => {
         disabled={!formValid}
         className="btnLoginConfirm"
         btnText="Login"
-        onClick={() => {}}
+        onClick={onSubmitForm}
       />
 
       <div className="login-forgot">

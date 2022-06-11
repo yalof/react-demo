@@ -6,7 +6,7 @@ import { useState } from "react";
 import Router from "./pages/Router";
 import { Provider } from "react-redux";
 import { store } from "./redux/store";
-
+import EmptyState from "./components/EmptyState/EmptyState";
 function App() {
   const [theme, setTheme] = useState<Theme>(Theme.Light);
   const isLightTheme = theme === Theme.Light;

@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import "../../components/CardPost/CardPost.css";
-import "./Posts.css";
+import "./MyPosts.css";
 import Lottie from "react-lottie";
 import animationData from "../../lotties/wine-glass-filling-white.json";
 import classNames from "classnames";
@@ -21,9 +21,8 @@ import {
   faThumbsDown,
   faThumbsUp,
 } from "@fortawesome/free-regular-svg-icons";
-import Input from ".";
 
-const Posts = () => {
+const MyPosts = () => {
   const { theme, onChangeTheme = () => {} } = useThemeContext();
   const isLightTheme = theme === Theme.Light;
   const defaultOptions = {
@@ -49,8 +48,6 @@ const Posts = () => {
 
   const allPostsLoading = useSelector(PostsSelectors.getAllPostsLoading);
 
-  const [search, setSearch] = useState();
-  const onSearch = () => {};
   return (
     <div
       className={classNames(
@@ -58,8 +55,7 @@ const Posts = () => {
         { ["postsContainer dark"]: !isLightTheme }
       )}
     >
-      <Input />
-      <div className="postsTitle">All posts</div>
+      <div className="postsTitle">My posts</div>
       <div className="btnPosts">
         <Button
           className={classNames("btnPostsSave", {
@@ -100,4 +96,4 @@ const Posts = () => {
   );
 };
 
-export default Posts;
+export default MyPosts;
