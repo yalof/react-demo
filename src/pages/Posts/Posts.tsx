@@ -10,10 +10,10 @@ import CardList from "../../components/CardList";
 import {
   PostsSelectors,
   setPostsTabs,
+  loadData,
 } from "../../redux/reducers/postsReducer";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { loadData } from "../../redux/reducers/postsReducer";
 import Button from "../../components/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -21,7 +21,8 @@ import {
   faThumbsDown,
   faThumbsUp,
 } from "@fortawesome/free-regular-svg-icons";
-import Input from ".";
+import Input from "../../components/Input";
+import "../../components/Input.css";
 
 const Posts = () => {
   const { theme, onChangeTheme = () => {} } = useThemeContext();
@@ -39,18 +40,40 @@ const Posts = () => {
   const cardsList = useSelector((state) =>
     PostsSelectors.getCards(state, activeTab)
   );
+  const totalCount = useSelector(PostsSelectors.getAllTotalCount);
 
   const onBtnClick = (btn: any) => {
     dispatch(setPostsTabs(btn));
   };
-  useEffect(() => {
-    dispatch(loadData());
-  }, []);
 
   const allPostsLoading = useSelector(PostsSelectors.getAllPostsLoading);
 
   const [search, setSearch] = useState();
-  const onSearch = () => {};
+  const [limit, setLimit] = useState(2);
+  const [page, setPage] = useState(1);
+
+  useEffect(() => {
+    const offset = (page - 1) * limit;
+    dispatch(loadData({ search, limit, offset }));
+  }, [search, limit, page]);
+
+  const onSearch = (event: any) => {
+    setSearch(event.target.value);
+    setPage(1);
+  };
+  const onLimitChange = (event: any) => {
+    setLimit(event.target.value);
+    setPage(1);
+  };
+
+  const onClickPrev = () => {
+    setPage(page - 1);
+  };
+  const onClickNext = () => {
+    setPage(page + 1);
+  };
+
+  const pagesCount = Math.ceil(totalCount / limit);
   return (
     <div
       className={classNames(
@@ -58,7 +81,7 @@ const Posts = () => {
         { ["postsContainer dark"]: !isLightTheme }
       )}
     >
-      <Input />
+      <Input value={search} onChange={onSearch} />
       <div className="postsTitle">All posts</div>
       <div className="btnPosts">
         <Button
@@ -94,7 +117,15 @@ const Posts = () => {
       {allPostsLoading ? (
         <Lottie options={defaultOptions} height={300} width={300} />
       ) : (
-        <CardList data={cardsList} />
+        <>
+          <CardList data={cardsList} />
+          <div className="paginationWrapper">
+            {page !== 1 && <div onClick={onClickPrev}>Previous </div>}
+            <Input type={"number"} value={limit} onChange={onLimitChange} />
+            {pagesCount !== page && <div onClick={onClickNext}> Next </div>}
+            {page}
+          </div>
+        </>
       )}
     </div>
   );

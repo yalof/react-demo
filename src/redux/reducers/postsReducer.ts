@@ -9,6 +9,7 @@ type PostState = {
   selectedPostt: Card | null;
   isAllPostsLoading: boolean;
   isSinglePostLoading: boolean;
+  totalAllPostsCount: number;
 };
 const initialState: PostState = {
   selectedPost: null,
@@ -18,6 +19,7 @@ const initialState: PostState = {
   selectedPostt: null,
   isAllPostsLoading: false,
   isSinglePostLoading: false,
+  totalAllPostsCount: 0,
 };
 
 const postsSlice = createSlice({
@@ -54,7 +56,7 @@ const postsSlice = createSlice({
     setPostsTabs: (state, action) => {
       state.postsTabs = action.payload;
     },
-    loadData: (state, action: PayloadAction<undefined>) => {},
+    loadData: (state, action: any) => {},
     loadPost: (state, action: PayloadAction<string>) => {},
     setPost: (state, action: PayloadAction<Card>) => {
       state.selectedPost = action.payload;
@@ -64,6 +66,9 @@ const postsSlice = createSlice({
     },
     setSinglePostLoading: (state, action) => {
       state.isSinglePostLoading = action.payload;
+    },
+    setTotalAllPostsCount: (state: any, action: any) => {
+      state.totalAllPostsCount = action.payload;
     },
   },
 });
@@ -79,10 +84,12 @@ export const {
   setPostsTabs,
   setAllPostsLoading,
   setSinglePostLoading,
+  setTotalAllPostsCount,
 } = postsSlice.actions;
 
 export default postsSlice.reducer;
 export const PostsSelectors = {
+  getAllTotalCount: (state: any) => state.post.totalAllPostsCount,
   getSinglePostLoading: (state: any) => state.posts.isSinglePostLoading,
   getAllPostsLoading: (state: any) => state.posts.isAllPostsLoading,
   getSelectedPostt: (state: any) => state.posts.selectedPostt,

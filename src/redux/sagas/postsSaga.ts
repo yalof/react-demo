@@ -6,16 +6,18 @@ import {
   loadPost,
   setAllPostsLoading,
   setSinglePostLoading,
+  setTotalAllPostsCount,
 } from "../reducers/postsReducer";
 import { getPosts, getSinglePost } from "../api";
 import { PayloadAction } from "@reduxjs/toolkit";
 
-function* getPostsSaga() {
+function* getPostsSaga(action: any) {
   yield put(setAllPostsLoading(true));
-  const { data, status } = yield call(getPosts);
+  const { data, status } = yield call(getPosts, action.payload);
 
   if (status === 200) {
     yield put(setPosts(data.results));
+    yield put(setTotalAllPostsCount(data.count));
   }
   yield put(setAllPostsLoading(false));
 }

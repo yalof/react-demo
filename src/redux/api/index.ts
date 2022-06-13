@@ -8,11 +8,11 @@ type UserType = {
   password: string;
   email: string;
 };
-const getPosts = () => {
-  return API.get("/blog/posts/my_posts");
+const getPosts = ({ search = "", limit = 10, offset = 0 }) => {
+  return API.get("/blog/posts/", { search, limit, offset });
 };
 const getMyPostsApi = () => {
-  return API.get("/blog/posts/");
+  return API.get("/blog/posts/my_posts/");
 };
 const getSinglePost = (id: string) => {
   return API.get(`/blog/posts/${id}/`);

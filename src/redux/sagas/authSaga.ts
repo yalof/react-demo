@@ -71,8 +71,6 @@ function* getUserNameInfoSaga(action: any) {
 
 export function* logoutSaga() {
   yield put(setLogStatus(false));
-  //put isLogin - false
-  //remove both tokens
   localStorage.removeItem("jwtAccessToken");
   localStorage.removeItem("jwtRefreshToken");
 }

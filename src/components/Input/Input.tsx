@@ -5,7 +5,7 @@ type InputProps = {
   className?: string;
   type?: string;
   onChange?: (event: any) => void;
-  value?: string;
+  value?: any;
   required?: string;
 };
 

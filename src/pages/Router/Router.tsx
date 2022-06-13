@@ -24,7 +24,6 @@ const Router = () => {
     }
   }, [isLoggedIn]);
 
-  //добавить страницу my post
   return (
     <BrowserRouter>
       {isLoggedIn ? (

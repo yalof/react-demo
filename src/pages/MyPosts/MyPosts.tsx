@@ -1,6 +1,7 @@
 import React from "react";
 import "../../components/CardPost/CardPost.css";
 import "./MyPosts.css";
+import "./Posts.css";
 import Lottie from "react-lottie";
 import animationData from "../../lotties/wine-glass-filling-white.json";
 import classNames from "classnames";
@@ -21,6 +22,7 @@ import {
   faThumbsDown,
   faThumbsUp,
 } from "@fortawesome/free-regular-svg-icons";
+import { useNavigate } from "react-router-dom";
 
 const MyPosts = () => {
   const { theme, onChangeTheme = () => {} } = useThemeContext();
@@ -43,11 +45,11 @@ const MyPosts = () => {
     dispatch(setPostsTabs(btn));
   };
   useEffect(() => {
-    dispatch(loadData());
+    dispatch(loadData({}));
   }, []);
 
   const allPostsLoading = useSelector(PostsSelectors.getAllPostsLoading);
-
+  const navigate = useNavigate();
   return (
     <div
       className={classNames(
@@ -84,6 +86,13 @@ const MyPosts = () => {
           })}
           onClick={() => onBtnClick("allPosts")}
           btnText="All"
+        />
+        <Button
+          className={classNames("btnPostsAdd", {
+            ["active"]: activeTab === "addPosts",
+          })}
+          onClick={() => onBtnClick("addPosts")}
+          btnText="Add post"
         />
       </div>
 

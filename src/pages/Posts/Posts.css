@@ -94,7 +94,7 @@
 .btnPostsSave,
 .btnPostsLike,
 .btnPostsDislike,
-.btnPostsAll {
+.btnPostsAll .btnPostsAdd {
   margin-top: 20px;
   margin-left: 35px;
   padding: 8px;
@@ -115,6 +115,7 @@
 .dark .btnPostsSave,
 .dark .btnPostsLike,
 .dark .btnPostsDislike,
-.dark .btnPostsAll {
+.dark .btnPostsAll,
+.dark .btnPostsAdd {
   background-color: #fdd892;
 }
