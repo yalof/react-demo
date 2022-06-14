@@ -1,7 +1,6 @@
 import React from "react";
 import "../../components/CardPost/CardPost.css";
 import "./MyPosts.css";
-import "./Posts.css";
 import Lottie from "react-lottie";
 import animationData from "../../lotties/wine-glass-filling-white.json";
 import classNames from "classnames";

@@ -22,7 +22,6 @@ import {
   faThumbsUp,
 } from "@fortawesome/free-regular-svg-icons";
 import Input from "../../components/Input";
-import "../../components/Input.css";
 
 const Posts = () => {
   const { theme, onChangeTheme = () => {} } = useThemeContext();
@@ -51,11 +50,12 @@ const Posts = () => {
   const [search, setSearch] = useState();
   const [limit, setLimit] = useState(2);
   const [page, setPage] = useState(1);
+  const [ordering, setOrdering] = useState("date");
 
   useEffect(() => {
     const offset = (page - 1) * limit;
-    dispatch(loadData({ search, limit, offset }));
-  }, [search, limit, page]);
+    dispatch(loadData({ search, limit, offset, ordering }));
+  }, [search, limit, page, ordering]);
 
   const onSearch = (event: any) => {
     setSearch(event.target.value);
@@ -74,6 +74,11 @@ const Posts = () => {
   };
 
   const pagesCount = Math.ceil(totalCount / limit);
+
+  const onSelectChange = (event: any) => {
+    setOrdering(event.target.value);
+    setPage(1);
+  };
   return (
     <div
       className={classNames(
@@ -113,7 +118,15 @@ const Posts = () => {
           btnText="All"
         />
       </div>
-
+      <div className="selectPosts">
+        <label> Sort: </label>
+        <select onChange={onSelectChange}>
+          <option value="date"> Date </option>
+          <option value="title">Title</option>
+          <option value="text">Text</option>
+          <option value="lesson_num">Lesson</option>
+        </select>
+      </div>
       {allPostsLoading ? (
         <Lottie options={defaultOptions} height={300} width={300} />
       ) : (

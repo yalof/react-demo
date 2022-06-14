@@ -8,8 +8,13 @@ type UserType = {
   password: string;
   email: string;
 };
-const getPosts = ({ search = "", limit = 10, offset = 0 }) => {
-  return API.get("/blog/posts/", { search, limit, offset });
+const getPosts = ({
+  search = "",
+  limit = 10,
+  offset = 0,
+  ordering = "date",
+}) => {
+  return API.get("/blog/posts/", { search, limit, offset, ordering });
 };
 const getMyPostsApi = () => {
   return API.get("/blog/posts/my_posts/");
