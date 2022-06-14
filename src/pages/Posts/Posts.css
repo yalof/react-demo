@@ -87,16 +87,18 @@
   justify-content: space-between;
 }
 
-.dark .iconsFooter {
+.dark .iconsFooter,
+.dark #arrowPagination {
   color: #fdd892;
 }
 
 .btnPostsSave,
 .btnPostsLike,
 .btnPostsDislike,
-.btnPostsAll .btnPostsAdd {
+.btnPostsAll,
+.btnPostsAdd {
   margin-top: 20px;
-  margin-left: 35px;
+  margin-right: 35px;
   padding: 8px;
   width: 70px;
   border: none;
@@ -117,5 +119,65 @@
 .dark .btnPostsDislike,
 .dark .btnPostsAll,
 .dark .btnPostsAdd {
-  background-color: #fdd892;
+  background-color: #f0ede8;
+  color: #5d5485;
+}
+
+.btnPosts {
+  display: flex;
+  justify-content: flex-start;
+  margin-left: 35px;
+}
+
+.inputSearch {
+  margin: 10px 35px;
+}
+
+.sortPosts {
+  margin-left: 35px;
+  font-family: Courier;
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+.dark .sortPosts,
+.dark .numberPagePosts {
+  color: #f0ede8;
+}
+select {
+  font-family: Courier;
+  background-color: #5d54854f;
+  border-radius: 50px;
+}
+.dark select {
+  background-color: #f0ede8;
+}
+
+.paginationWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 30px;
+  gap: 5px;
+  flex-direction: column;
+}
+
+.paginationContent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  cursor: pointer;
+}
+.inputPaginationPosts {
+  width: 30px;
+}
+
+.numberPagePosts {
+  font-family: Courier;
+  font-weight: bold;
+}
+
+#arrowPagination {
+  color: #5d5485;
 }

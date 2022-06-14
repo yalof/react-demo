@@ -89,7 +89,7 @@ export const {
 
 export default postsSlice.reducer;
 export const PostsSelectors = {
-  getAllTotalCount: (state: any) => state.post.totalAllPostsCount,
+  getAllTotalCount: (state: any) => state.posts.totalAllPostsCount,
   getSinglePostLoading: (state: any) => state.posts.isSinglePostLoading,
   getAllPostsLoading: (state: any) => state.posts.isAllPostsLoading,
   getSelectedPostt: (state: any) => state.posts.selectedPostt,

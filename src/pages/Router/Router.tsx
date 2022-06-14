@@ -15,14 +15,15 @@ import { useDispatch, useSelector } from "react-redux";
 import EmptyState from "../../components/EmptyState";
 
 const Router = () => {
-  // const isLoggedIn = localStorage.getItem("isLoggedIn");
-  const isLoggedIn = useSelector(AuthSelector.getLogStatus);
+  const isLoggedIn = true;
+  //const isLoggedIn = localStorage.getItem("isLoggedIn");
+  //const isLoggedIn = useSelector(AuthSelector.getLogStatus);
   const dispatch = useDispatch();
-  useEffect(() => {
+  /* useEffect(() => {
     if (isLoggedIn) {
       dispatch(getUserNameInfo(""));
     }
-  }, [isLoggedIn]);
+  }, [isLoggedIn]);*/
 
   return (
     <BrowserRouter>

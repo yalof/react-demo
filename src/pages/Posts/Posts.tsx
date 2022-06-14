@@ -20,6 +20,8 @@ import {
   faFloppyDisk,
   faThumbsDown,
   faThumbsUp,
+  faArrowAltCircleLeft,
+  faArrowAltCircleRight,
 } from "@fortawesome/free-regular-svg-icons";
 import Input from "../../components/Input";
 
@@ -86,8 +88,11 @@ const Posts = () => {
         { ["postsContainer dark"]: !isLightTheme }
       )}
     >
-      <Input value={search} onChange={onSearch} />
       <div className="postsTitle">All posts</div>
+      <div className="inputSearch">
+        <Input placeholder="Search..." value={search} onChange={onSearch} />
+      </div>
+
       <div className="btnPosts">
         <Button
           className={classNames("btnPostsSave", {
@@ -118,7 +123,7 @@ const Posts = () => {
           btnText="All"
         />
       </div>
-      <div className="selectPosts">
+      <div className="sortPosts">
         <label> Sort: </label>
         <select onChange={onSelectChange}>
           <option value="date"> Date </option>
@@ -133,10 +138,32 @@ const Posts = () => {
         <>
           <CardList data={cardsList} />
           <div className="paginationWrapper">
-            {page !== 1 && <div onClick={onClickPrev}>Previous </div>}
-            <Input type={"number"} value={limit} onChange={onLimitChange} />
-            {pagesCount !== page && <div onClick={onClickNext}> Next </div>}
-            {page}
+            <div className="paginationContent">
+              {page !== 1 && (
+                <div onClick={onClickPrev}>
+                  <FontAwesomeIcon
+                    id="arrowPagination"
+                    icon={faArrowAltCircleLeft}
+                  />{" "}
+                </div>
+              )}
+              <Input
+                className="inputPaginationPosts"
+                type={"number"}
+                value={limit}
+                onChange={onLimitChange}
+              />
+              {pagesCount !== page && (
+                <div onClick={onClickNext}>
+                  {" "}
+                  <FontAwesomeIcon
+                    id="arrowPagination"
+                    icon={faArrowAltCircleRight}
+                  />{" "}
+                </div>
+              )}
+            </div>
+            <div className="numberPagePosts">{page} page </div>
           </div>
         </>
       )}

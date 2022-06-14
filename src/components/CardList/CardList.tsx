@@ -9,7 +9,7 @@ const CardList = ({ data }: any) => {
   };
   const cardsList = data.map((item: Card) => {
     return (
-      <div onClick={() => onCardClick(item.id)}>
+      <div key={item.id} onClick={() => onCardClick(item.id)}>
         <CardPost
           id={item.id}
           image={item.image}
