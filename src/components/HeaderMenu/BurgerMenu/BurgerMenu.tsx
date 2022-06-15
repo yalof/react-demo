@@ -23,7 +23,7 @@ export default (props: any) => {
       <NavLink className="menu-item" to="my-cards-list">
         My posts
       </NavLink>
-      <NavLink className="menu-item" to="add_post">
+      <NavLink className="menu-item" to="add-post">
         Add posts
       </NavLink>
       <NavLink className="menu-item" to="auth" onClick={removeItem}>

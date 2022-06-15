@@ -13,17 +13,17 @@ import {
 } from "../../redux/reducers/authReducer";
 import { useDispatch, useSelector } from "react-redux";
 import EmptyState from "../../components/EmptyState";
+import AddPost from "../AddPost";
 
 const Router = () => {
-  const isLoggedIn = true;
   //const isLoggedIn = localStorage.getItem("isLoggedIn");
-  //const isLoggedIn = useSelector(AuthSelector.getLogStatus);
+  const isLoggedIn = useSelector(AuthSelector.getLogStatus);
   const dispatch = useDispatch();
-  /* useEffect(() => {
+  useEffect(() => {
     if (isLoggedIn) {
       dispatch(getUserNameInfo(""));
     }
-  }, [isLoggedIn]);*/
+  }, [isLoggedIn]);
 
   return (
     <BrowserRouter>
@@ -35,6 +35,7 @@ const Router = () => {
             <Route path={"cards-list/:id"} element={<Content />} />
             <Route path={"info"} element={<Information />} />
             <Route path={"empty"} element={<EmptyState />}></Route>
+            <Route path={"add-post"} element={<AddPost />}></Route>
           </Route>
           <Route path="*" element={<Navigate to="/cards-list" replace />} />
         </Routes>

@@ -70,6 +70,7 @@ const postsSlice = createSlice({
     setTotalAllPostsCount: (state: any, action: any) => {
       state.totalAllPostsCount = action.payload;
     },
+    addPost: (state, action) => {},
   },
 });
 export const {
@@ -85,6 +86,7 @@ export const {
   setAllPostsLoading,
   setSinglePostLoading,
   setTotalAllPostsCount,
+  addPost,
 } = postsSlice.actions;
 
 export default postsSlice.reducer;

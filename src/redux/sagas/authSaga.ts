@@ -59,11 +59,7 @@ function* loginUserSaga(action: any) {
 }
 
 function* getUserNameInfoSaga(action: any) {
-  const accessToken = localStorage.getItem("jwtAccessToken");
-  const { status, data } = yield callCheckingAuth(
-    getUserNameInfoApi,
-    accessToken
-  );
+  const { status, data } = yield callCheckingAuth(getUserNameInfoApi);
   if (status === 200) {
     yield put(setUserNameHeader(data.username));
   }
