@@ -61,7 +61,7 @@ const Posts = ({ isPersonal }: any) => {
     const offset = (page - 1) * limit;
     dispatch(
       isPersonal
-        ? loadMyPosts({ search, limit, offset })
+        ? loadMyPosts({})
         : loadData({ search, limit, offset, ordering })
     );
   }, [search, limit, page, ordering, isPersonal]);

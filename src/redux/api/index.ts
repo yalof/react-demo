@@ -17,12 +17,15 @@ const getPosts = ({
 }) => {
   return API.get("/blog/posts/", { search, limit, offset, ordering });
 };
-const getMyPostsApi = (token: any) => {
+const getMyPostsApi = (token: string) => {
   return API.get(
     "/blog/posts/my_posts/",
-
     {},
-    { headers: { Autorization: `Bearer ${token}` } }
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
   );
 };
 const getSinglePost = (id: string) => {
