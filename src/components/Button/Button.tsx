@@ -4,7 +4,7 @@ import "./Button.css";
 type ButtonProps = {
   value?: string;
   disabled?: boolean;
-  onClick?: () => void;
+  onClick?: (event: any) => void;
   className: string;
   btnText?: any;
 };

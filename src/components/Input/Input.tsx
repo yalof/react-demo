@@ -5,8 +5,9 @@ type InputProps = {
   className?: string;
   type?: string;
   onChange?: (event: any) => void;
-  value?: string;
+  value?: any;
   required?: string;
+  placeholder?: string;
 };
 
 const Input: FC<InputProps> = ({
@@ -16,6 +17,7 @@ const Input: FC<InputProps> = ({
   value,
   required,
   props,
+  placeholder,
 }: any) => {
   return (
     <input
@@ -24,6 +26,7 @@ const Input: FC<InputProps> = ({
       required={required}
       type={type}
       onChange={onChange}
+      placeholder={placeholder}
     />
   );
 };

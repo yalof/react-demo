@@ -1,0 +1,135 @@
+.addPostWrapper {
+  height: 100vh;
+}
+
+.addPostForm {
+  padding: 40px 5px;
+  width: 500px;
+  margin: 30px auto;
+  border-radius: 20px;
+  background-color: #5d548522;
+  font-family: "Courier";
+  display: flex;
+  gap: 25px;
+}
+
+.addPostForm h1 {
+  font-size: 16px;
+}
+.dark .addPostForm {
+  background-color: #f8f2e7;
+}
+
+.addPostForm input {
+  background-color: aliceblue;
+  border-radius: 20px;
+  width: 300px;
+  margin: 0 auto;
+  display: block;
+}
+
+.addPostForm input:focus {
+  border-color: black;
+}
+
+.addPostForm textarea {
+  background-color: aliceblue;
+  border-radius: 10px;
+  width: 300px;
+  border: 1px solid #5d5485;
+  min-height: 80px;
+}
+
+.addPostTitle {
+  color: #5d5485;
+  padding: 10px 0 0 35px;
+  font-size: 24px;
+  font-weight: 700;
+}
+.dark .addPostTitle {
+  color: #f8f2e7;
+}
+.labelAddPostForm {
+  color: #5d5485;
+  font-weight: 700;
+}
+
+.btnAddPostFooter {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 65px;
+}
+
+.btnAddPost {
+  width: 80px;
+  padding: 8px;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  text-align: center;
+  background-color: #5d5485;
+  color: white;
+  cursor: pointer;
+}
+
+.add:focus {
+  background-color: #5d54859a;
+}
+.upload {
+  width: 120px;
+  margin-top: 2px;
+  background-color: #5d54859a;
+  color: black;
+}
+.cancel {
+  margin-right: 5px;
+  background-color: #5d54859a;
+  color: black;
+}
+.upload:focus,
+.cancel:focus,
+.delete:focus {
+  background-color: #5d5485;
+}
+
+.delete {
+  color: red;
+  background-color: #5d548522;
+}
+.add:focus {
+  background-color: #5d54859a;
+}
+
+.formTitle {
+  font-size: 20px;
+  font-weight: 700;
+  color: #5d5485;
+}
+.dragAndDrop {
+  flex: 1;
+  display: flex;
+  padding: 18px 0;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
+  width: 200px;
+  background: white;
+  border: 1px dashed gray;
+  box-sizing: border-box;
+  border-radius: 8px;
+  font-size: 12px;
+  cursor: pointer;
+}
+.dragAndDrop:hover {
+  cursor: pointer;
+  background: rgb(237, 240, 240);
+}
+.image {
+  width: 50px;
+  height: 50px;
+}
+.err {
+  color: red;
+  font-size: 12px;
+}

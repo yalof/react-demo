@@ -1,7 +1,7 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import { compose } from "redux";
 import postsReducer from "./reducers/postsReducer";
-import authReducer from "./reducers/postsReducer";
+import authReducer from "./reducers/authReducer";
 import createSagaMiddleware from "redux-saga";
 import rootSaga from "./sagas/rootSaga";
 

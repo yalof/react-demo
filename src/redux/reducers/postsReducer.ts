@@ -6,18 +6,22 @@ type PostState = {
   selectedImg: string | Array<string> | null;
   cardsList: Card[];
   postsTabs: string;
-  selectedPostt: Card | null;
   isAllPostsLoading: boolean;
   isSinglePostLoading: boolean;
+  totalAllPostsCount: number;
+  myCardsList: Card[];
+  totalMyPostsCount: number;
 };
 const initialState: PostState = {
   selectedPost: null,
   selectedImg: "",
   cardsList: [],
   postsTabs: "all",
-  selectedPostt: null,
   isAllPostsLoading: false,
   isSinglePostLoading: false,
+  totalAllPostsCount: 0,
+  myCardsList: [],
+  totalMyPostsCount: 0,
 };
 
 const postsSlice = createSlice({
@@ -54,7 +58,7 @@ const postsSlice = createSlice({
     setPostsTabs: (state, action) => {
       state.postsTabs = action.payload;
     },
-    loadData: (state, action: PayloadAction<undefined>) => {},
+    loadData: (state, action: any) => {},
     loadPost: (state, action: PayloadAction<string>) => {},
     setPost: (state, action: PayloadAction<Card>) => {
       state.selectedPost = action.payload;
@@ -64,6 +68,23 @@ const postsSlice = createSlice({
     },
     setSinglePostLoading: (state, action) => {
       state.isSinglePostLoading = action.payload;
+    },
+    setTotalAllPostsCount: (state: any, action: PayloadAction<number>) => {
+      state.totalAllPostsCount = action.payload;
+    },
+    addPost: (state, action) => {},
+    setMyPosts: (state, action) => {
+      state.myCardsList = action.payload.map((card: Card) => {
+        return {
+          ...card,
+          likeStatus: null,
+          saved: false,
+        };
+      });
+    },
+    loadMyPosts: (state, action: any) => {},
+    setTotalMyPostsCount: (state, action: PayloadAction<number>) => {
+      state.totalMyPostsCount = action.payload;
     },
   },
 });
@@ -79,18 +100,24 @@ export const {
   setPostsTabs,
   setAllPostsLoading,
   setSinglePostLoading,
+  setTotalAllPostsCount,
+  addPost,
+  setMyPosts,
+  loadMyPosts,
+  setTotalMyPostsCount,
 } = postsSlice.actions;
 
 export default postsSlice.reducer;
 export const PostsSelectors = {
+  getMyTotalCount: (state: any) => state.posts.totalMyPostsCount,
+  getAllTotalCount: (state: any) => state.posts.totalAllPostsCount,
   getSinglePostLoading: (state: any) => state.posts.isSinglePostLoading,
   getAllPostsLoading: (state: any) => state.posts.isAllPostsLoading,
-  getSelectedPostt: (state: any) => state.posts.selectedPostt,
   getSelectedPost: (state: any) => state.posts.selectedPost,
   getSelectedImg: (state: any) => state.posts.selectedImg,
   getPostsTabs: (state: any) => state.posts.postsTabs,
-  getCards: (state: any, filter: any) => {
-    const cards = state.posts.cardsList;
+  getCards: (state: any, filter: any, isPersonal: boolean) => {
+    const cards = isPersonal ? state.posts.myCardsList : state.posts.cardsList;
     switch (filter) {
       case "likePosts":
         return cards.filter((a: any) => a.likeStatus === "like");
