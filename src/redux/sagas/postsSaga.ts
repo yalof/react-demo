@@ -49,7 +49,7 @@ function* getMyPostsSaga() {
   }
   yield put(setAllPostsLoading(false));
 }
-export default function* postWatcher() {
+export default function* postsWatcher() {
   yield all([
     takeLatest(loadData, getPostsSaga),
     takeLatest(loadPost, getSinglePostSaga),

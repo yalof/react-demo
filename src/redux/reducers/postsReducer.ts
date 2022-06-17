@@ -6,7 +6,6 @@ type PostState = {
   selectedImg: string | Array<string> | null;
   cardsList: Card[];
   postsTabs: string;
-  selectedPostt: Card | null;
   isAllPostsLoading: boolean;
   isSinglePostLoading: boolean;
   totalAllPostsCount: number;
@@ -18,7 +17,6 @@ const initialState: PostState = {
   selectedImg: "",
   cardsList: [],
   postsTabs: "all",
-  selectedPostt: null,
   isAllPostsLoading: false,
   isSinglePostLoading: false,
   totalAllPostsCount: 0,
@@ -115,7 +113,6 @@ export const PostsSelectors = {
   getAllTotalCount: (state: any) => state.posts.totalAllPostsCount,
   getSinglePostLoading: (state: any) => state.posts.isSinglePostLoading,
   getAllPostsLoading: (state: any) => state.posts.isAllPostsLoading,
-  getSelectedPostt: (state: any) => state.posts.selectedPostt,
   getSelectedPost: (state: any) => state.posts.selectedPost,
   getSelectedImg: (state: any) => state.posts.selectedImg,
   getPostsTabs: (state: any) => state.posts.postsTabs,

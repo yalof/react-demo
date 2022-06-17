@@ -148,7 +148,7 @@ const Posts = ({ isPersonal }: any) => {
         <Lottie options={defaultOptions} height={300} width={300} />
       ) : (
         <>
-          <CardList data={cardsList} />
+          <CardList data={cardsList} isPersonal />
           <div className="paginationWrapper">
             <div className="paginationContent">
               {page !== 1 && (

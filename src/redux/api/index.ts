@@ -46,11 +46,11 @@ const getUserNameInfoApi = (token: string) => {
     "/auth/users/me",
     {},
     {
-      headers: { Authorization: `Bearer ${token}`, accept: "application/json" },
+      headers: { Authorization: `Bearer ${token}` },
     }
   );
 };
-
+//accept: "application/json"
 const verifyToken = (token: string) => {
   return API.post("/auth/jwt/verify/", { token });
 };

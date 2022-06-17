@@ -29,6 +29,7 @@ type CardPostProps = {
   onClick?: (event: any) => void;
   likeStatus?: string | null;
   saved?: boolean;
+  isPersonal?: boolean;
   // data: CardType;
 };
 
@@ -40,6 +41,7 @@ const CardPost: FC<CardPostProps> = ({
   id,
   likeStatus,
   saved,
+  isPersonal,
   onClick,
 }) => {
   const { theme, onChangeTheme = () => {} } = useThemeContext();
