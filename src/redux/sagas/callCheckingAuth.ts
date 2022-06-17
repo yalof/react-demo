@@ -2,6 +2,7 @@
 
 import { call } from "redux-saga/effects";
 import { getNewAccessToken, verifyToken } from "../api";
+import { logout } from "../reducers/authReducer";
 
 export function* callCheckingAuth(api, ...rest) {
   const accessToken = localStorage.getItem("jwtAccessToken");
@@ -13,7 +14,7 @@ export function* callCheckingAuth(api, ...rest) {
     const { status: accessStatus } = yield call(verifyToken, accessToken);
     const { status: refreshStatus } = yield call(verifyToken, refreshToken);
     if (refreshStatus === 401) {
-      yield call(logout());
+      yield put(logout());
       //yield put
     } else if (accessStatus === 401) {
       const { status, data } = yield call(getNewAccessToken, refreshToken);
@@ -22,7 +23,7 @@ export function* callCheckingAuth(api, ...rest) {
         const refreshedResponse = yield call(api, data.access, ...rest);
         return refreshedResponse;
       } else {
-        yield call(logout());
+        yield put(logout());
       }
     } else {
       return response;

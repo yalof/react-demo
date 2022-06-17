@@ -58,9 +58,10 @@ function* loginUserSaga(action: any) {
   yield put(setLoginUserLoading(false));
 }
 
-function* getUserNameInfoSaga(action: any) {
+function* getUserNameInfoSaga() {
   const { status, data } = yield callCheckingAuth(getUserNameInfoApi);
   if (status === 200) {
+    yield put(setLogStatus(true));
     yield put(setUserNameHeader(data.username));
   }
 }

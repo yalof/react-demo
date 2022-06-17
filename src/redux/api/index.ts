@@ -17,9 +17,10 @@ const getPosts = ({
 }) => {
   return API.get("/blog/posts/", { search, limit, offset, ordering });
 };
-const getMyPostsApi = (token: string) => {
+const getMyPostsApi = (token: any) => {
   return API.get(
     "/blog/posts/my_posts/",
+
     {},
     { headers: { Autorization: `Bearer ${token}` } }
   );
@@ -60,6 +61,7 @@ const addPostApi = (token: string, postData: any) => {
   return API.post("/blog/posts/", postData, {
     headers: {
       Authorization: `Bearer ${token}`,
+      "Content-Type": "multipart/form-data",
     },
   });
 };

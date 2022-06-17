@@ -11,6 +11,7 @@ import {
   PostsSelectors,
   setPostsTabs,
   loadData,
+  loadMyPosts,
 } from "../../redux/reducers/postsReducer";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
@@ -24,8 +25,9 @@ import {
   faArrowAltCircleRight,
 } from "@fortawesome/free-regular-svg-icons";
 import Input from "../../components/Input";
+import PopUp from "../../components/PopUp";
 
-const Posts = () => {
+const Posts = ({ isPersonal }: any) => {
   const { theme, onChangeTheme = () => {} } = useThemeContext();
   const isLightTheme = theme === Theme.Light;
   const defaultOptions = {
@@ -39,8 +41,9 @@ const Posts = () => {
   const dispatch = useDispatch();
   const activeTab = useSelector(PostsSelectors.getPostsTabs);
   const cardsList = useSelector((state) =>
-    PostsSelectors.getCards(state, activeTab)
+    PostsSelectors.getCards(state, activeTab, isPersonal)
   );
+
   const totalCount = useSelector(PostsSelectors.getAllTotalCount);
 
   const onBtnClick = (btn: any) => {
@@ -56,8 +59,12 @@ const Posts = () => {
 
   useEffect(() => {
     const offset = (page - 1) * limit;
-    dispatch(loadData({ search, limit, offset, ordering }));
-  }, [search, limit, page, ordering]);
+    dispatch(
+      isPersonal
+        ? loadMyPosts({ search, limit, offset })
+        : loadData({ search, limit, offset, ordering })
+    );
+  }, [search, limit, page, ordering, isPersonal]);
 
   const onSearch = (event: any) => {
     setSearch(event.target.value);
@@ -88,7 +95,7 @@ const Posts = () => {
         { ["postsContainer dark"]: !isLightTheme }
       )}
     >
-      <div className="postsTitle">All posts</div>
+      <div className="postsTitle">{isPersonal ? "My Posts" : "All posts"}</div>
       <div className="inputSearch">
         <Input placeholder="Search..." value={search} onChange={onSearch} />
       </div>
@@ -123,15 +130,20 @@ const Posts = () => {
           btnText="All"
         />
       </div>
-      <div className="sortPosts">
-        <label> Sort: </label>
-        <select onChange={onSelectChange}>
-          <option value="date"> Date </option>
-          <option value="title">Title</option>
-          <option value="text">Text</option>
-          <option value="lesson_num">Lesson</option>
-        </select>
-      </div>
+      {!isPersonal && (
+        <div className="sortPosts">
+          <label>
+            {" "}
+            Sort:
+            <select name="" onChange={onSelectChange}>
+              <option value="date"> Date </option>
+              <option value="title">Title</option>
+              <option value="text">Text</option>
+              <option value="lesson_num">Lesson</option>
+            </select>
+          </label>
+        </div>
+      )}
       {allPostsLoading ? (
         <Lottie options={defaultOptions} height={300} width={300} />
       ) : (

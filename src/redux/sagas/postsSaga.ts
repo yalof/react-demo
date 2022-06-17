@@ -8,8 +8,11 @@ import {
   setSinglePostLoading,
   setTotalAllPostsCount,
   addPost,
+  setMyPosts,
+  loadMyPosts,
+  setTotalMyPostsCount,
 } from "../reducers/postsReducer";
-import { getPosts, getSinglePost, addPostApi } from "../api";
+import { getPosts, getSinglePost, addPostApi, getMyPostsApi } from "../api";
 import { PayloadAction } from "@reduxjs/toolkit";
 import { callCheckingAuth } from "./callCheckingAuth";
 
@@ -36,10 +39,21 @@ function* getSinglePostSaga(action: PayloadAction<string>) {
 function* addPostSaga(action: any) {
   const { data, status } = yield callCheckingAuth(addPostApi, action.payload);
 }
+
+function* getMyPostsSaga() {
+  yield put(setAllPostsLoading(true));
+  const { data, status } = yield callCheckingAuth(getMyPostsApi);
+  if (status === 200) {
+    yield put(setMyPosts(data));
+    yield put(setTotalMyPostsCount(data.count));
+  }
+  yield put(setAllPostsLoading(false));
+}
 export default function* postWatcher() {
   yield all([
     takeLatest(loadData, getPostsSaga),
     takeLatest(loadPost, getSinglePostSaga),
     takeLatest(addPost, addPostSaga),
+    takeLatest(loadMyPosts, getMyPostsSaga),
   ]);
 }

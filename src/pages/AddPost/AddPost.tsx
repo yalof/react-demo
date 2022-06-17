@@ -105,7 +105,7 @@ const AddPost = () => {
 
         <label>
           <div className="labelAddPostForm">Lesson</div>
-          <Input onChange={lessonValid} value={lesson} />
+          <Input onChange={lessonValid} value={lesson} type={"number"} />
           {lessonError && <div className="err">{lessonError}</div>}
         </label>
         <label>

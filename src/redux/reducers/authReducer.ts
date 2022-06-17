@@ -42,7 +42,7 @@ const authSlice = createSlice({
     setUserNameHeader: (state, action) => {
       state.userNameHeader = action.payload;
     },
-    logout: (state, action) => {},
+    logout: (state: any, action: any) => {},
   },
 });
 

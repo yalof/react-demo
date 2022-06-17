@@ -125,6 +125,10 @@
   cursor: pointer;
   background: rgb(237, 240, 240);
 }
+.image {
+  width: 150px;
+  height: 150px;
+}
 .err {
   color: red;
   font-size: 12px;

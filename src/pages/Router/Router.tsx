@@ -3,7 +3,6 @@ import { Route, BrowserRouter, Routes, Navigate } from "react-router-dom";
 import HeaderMenu from "../../components/HeaderMenu";
 import Information from "../Information";
 import Posts from "../Posts";
-import MyPosts from "../MyPosts";
 import Authorization from "../Authentication/Authorization";
 import Confirmation from "../Confirmation";
 import Content from "../Content/Content";
@@ -30,9 +29,10 @@ const Router = () => {
       {isLoggedIn ? (
         <Routes>
           <Route path={"/"} element={<HeaderMenu />}>
-            <Route path={"cards-list"} element={<Posts />} />
-            <Route path={"my-cards-list"} element={<MyPosts />} />
+            <Route path={"cards-list"} element={<Posts isPersonal={false} />} />
             <Route path={"cards-list/:id"} element={<Content />} />
+            <Route path={"my-cards-list"} element={<Posts isPersonal />} />
+            <Route path={"my-cards-list/:id"} element={<Content />} />
             <Route path={"info"} element={<Information />} />
             <Route path={"empty"} element={<EmptyState />}></Route>
             <Route path={"add-post"} element={<AddPost />}></Route>
