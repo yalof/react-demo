@@ -1,11 +1,10 @@
 .postsWrapper {
-  padding: 20px 30px;
+  padding: 20px 100px;
+  height: 100vh;
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
   gap: 30px;
   justify-content: center;
-  height: 100vh;
+  flex-wrap: wrap;
   text-decoration: none;
 }
 .card-post {
@@ -13,19 +12,20 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 25%;
-  max-height: 350px;
+  width: 300px;
+  height: 280px;
   font-family: "Courier";
   border-radius: 10px;
   border: 1px solid #9088b629;
   padding: 10px 10px;
   box-shadow: 0px 0px 20px 0px #5d5485;
+  cursor: pointer;
 }
 
 .card-img {
-  width: 70%;
+  width: 100%;
+  min-height: 30%;
   border-radius: 10px;
-  margin: 0 auto;
 }
 
 .card-text {
@@ -78,4 +78,43 @@
 
 .linkCards {
   text-decoration: none;
+}
+
+.iconsFooter {
+  color: #5d5485;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dark .iconsFooter {
+  color: #fdd892;
+}
+
+.btnPostsSave,
+.btnPostsLike,
+.btnPostsDislike,
+.btnPostsAll {
+  margin-top: 20px;
+  margin-left: 35px;
+  padding: 8px;
+  width: 70px;
+  border: none;
+  outline: none;
+  border-radius: 50px;
+  text-align: center;
+  background-color: #5d54854f;
+  color: white;
+  cursor: pointer;
+  font-family: "Courier";
+}
+
+.active {
+  background-color: #5d5485;
+}
+.dark .btnPostsSave,
+.dark .btnPostsLike,
+.dark .btnPostsDislike,
+.dark .btnPostsAll {
+  background-color: #fdd892;
 }

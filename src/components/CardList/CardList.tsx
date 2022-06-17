@@ -1,32 +1,28 @@
-import React, {FC} from 'react';
-import '../../pages/Posts/Posts.css';
-import CardPost from '../../components/CardPost'; 
-import {Link, NavLink} from "react-router-dom";
+import React from "react";
+import "../../pages/Posts/Posts.css";
+import CardPost from "../../components/CardPost";
+import { Card } from "../../common/types";
 
-const CardList = (props: any) => {
-
-    const cardsList = props.data.map((item: any) => {
-      return (
-        <>
-        { 
-        // Как теперь убрать стили для ссылки-карточки? Карточки некрасиво отрисовываются 
-          <NavLink className='linkCards' key={item.id} to={`/cards-list/${item.id}`}>
+const CardList = ({ data }: any) => {
+  const onCardClick = (id: any) => {
+    window.location.href = `/cards-list/${id}`;
+  };
+  const cardsList = data.map((item: Card) => {
+    return (
+      <div onClick={() => onCardClick(item.id)}>
         <CardPost
+          id={item.id}
           image={item.image}
           title={item.title}
           text={item.text}
           date={item.date}
+          likeStatus={item.likeStatus}
+          saved={item.saved}
         />
-        </NavLink>
+      </div>
+    );
+  });
+  return <div className="postsWrapper">{cardsList}</div>;
+};
 
-        }
-       </>
-      );
-    });
-    return <div className='postsWrapper'>{cardsList}</div>;
-  };
-  
-
-
-
-export default CardList
+export default CardList;

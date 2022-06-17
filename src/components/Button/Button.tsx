@@ -6,7 +6,7 @@ type ButtonProps = {
   disabled?: boolean;
   onClick?: () => void;
   className: string;
-  btnText?: string;
+  btnText?: any;
 };
 
 const Button: FC<ButtonProps> = ({
